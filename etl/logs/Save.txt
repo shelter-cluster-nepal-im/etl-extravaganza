@@ -1,0 +1,56 @@
+Save******Report for C- Save the Children.xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+('Bhaktapur', 'None'),('Rasuwa', 'None'),('Sindhupalchok', 'None'),('Sindhupalchok', 'None'),('Bhaktapur', 'None'),('Bhaktapur', 'None'),('Gorkha', 'None'),('Gorkha', 'None'),('Dolakha', 'None'),('Dhading', 'None'),('Sindhupalchok', 'None'),('Gorkha', 'None'),('Gorkha', 'None'),('Dhading', 'None'),('Sindhupalchok', 'None'),('Sindhupalchok', 'None'),('Gorkha', 'None'),('Sindhupalchok', 'None'),('Rasuwa', 'None'),('Gorkha', 'None'),('Gorkha', 'None'),('Sindhupalchok', 'None'),('Sindhupalchok', 'None'),('Nuwakot', 'None'),('Nuwakot', 'None'),('Sindhupalchok', 'None'),('Nuwakot', 'None')
+
+Malformed wards: 
+
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None'),('Shelter', 'None')
+
+Targets not in Referece
+targeted group
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,completed
+
+Malformatted date
+None @ cell S69,2015-02-27 00:00:00 @ cell S119,2015-02-27 00:00:00 @ cell S124,None @ cell S196,None @ cell S197,None @ cell S238,2015-02-27 00:00:00 @ cell S253,2015-02-27 00:00:00 @ cell S256,None @ cell S286,None @ cell S287,None @ cell S290,None @ cell S291,None @ cell S296,None @ cell S298,None @ cell S302,None @ cell S303,None @ cell S304
+
+Malformatted date or before start date
+None @ cell T69,None @ cell T196,None @ cell T197,None @ cell T238,None @ cell T280,None @ cell T281,None @ cell T282,None @ cell T283,None @ cell T286,None @ cell T287,None @ cell T290,None @ cell T291,None @ cell T293,None @ cell T294,None @ cell T296,None @ cell T298,None @ cell T302,None @ cell T303,None @ cell T304
+

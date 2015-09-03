@@ -1,0 +1,738 @@
+******Report for C - Caritas Switzerland - Deepesh.xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+
+
+Malformed wards: 
+
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+
+
+Malformatted date
+
+
+Malformatted date or before start date
+
+
+
+
+ 
+
+
+
+******Report for C - IOM - Deepesh.xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+
+
+Malformed wards: 
+
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+('NFI', 'Construction Materials (Excluding CGI and Fixings)'),('NFI', 'Construction Materials (Excluding CGI and Fixings)'),('NFI', 'Construction Materials (Excluding CGI and Fixings)'),('NFI', 'Construction Materials (Excluding CGI and Fixings)'),('NFI', 'Construction Materials (Excluding CGI and Fixings)'),('NFI', 'Construction Materials (Excluding CGI and Fixings)'),('NFI', 'Construction Materials (Excluding CGI and Fixings)')
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+
+
+Malformatted date
+
+
+Malformatted date or before start date
+
+
+
+
+ 
+
+
+
+******Report for C - Samaritan's Purse - Ewan.xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+('Bhaktapur', 'None'),('Bhaktapur', 'None'),('Dhading', 'None'),('Dhading', 'None'),('Dhading', 'None'),('Dolakha', 'None'),('Dolakha', 'None'),('Gorkha', 'None'),('Gorkha', 'None'),('Gorkha', 'None'),('Kabhrepalanchok', 'None'),('Kabhrepalanchok', 'None'),('Kabhrepalanchok', 'None'),('Lalitpur', 'None'),('Lalitpur', 'None'),('Lalitpur', 'None'),('Lalitpur', 'None'),('Makawanpur', 'None'),('Nuwakot', 'None'),('Nuwakot', 'None'),('Nuwakot', 'None'),('Nuwakot', 'None'),('Ramechhap', 'None'),('Sindhupalchok', 'None'),('Sindhupalchok', 'None'),('Siraha', 'None')
+
+Malformed wards: 
+
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+
+
+Malformatted date
+None @ cell S71,None @ cell S72,None @ cell S73,None @ cell S74,None @ cell S113,None @ cell S114,None @ cell S115
+
+Malformatted date or before start date
+None @ cell T71,None @ cell T72,None @ cell T73,None @ cell T74,2014-08-07 00:00:00 @ cell T107,None @ cell T113,None @ cell T114,None @ cell T115
+
+
+
+ 
+
+
+
+******Report for C - Solidarities International - Sushil.xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+
+
+Malformed wards: 
+
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+
+
+Malformatted date
+
+
+Malformatted date or before start date
+
+
+
+
+ 
+
+
+
+******Report for C - Tearfund - Sushil.xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+Tearfund,Tearfund,Tearfund,Tearfund,Tearfund,Tearfund
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+
+
+Malformed wards: 
+
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+Blank @ cellM10,Blank @ cellM11
+
+Invalid numbers for Total Number Households
+Blank@ N3,Blank@ N5,Blank@ N10,Blank@ N11
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+
+
+Malformatted date
+
+
+Malformatted date or before start date
+
+
+
+
+ 
+
+
+
+******Report for C - UNHABITAT - Ewan.xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+('Bhaktapur', 'Bhaktapur municipality'),('Bhaktapur', 'Bhaktapur municipality')
+
+Malformed wards: 
+(None),(None),(None),(None),(None),(None),(None),(None),(None),(None),(None),(None),(None)
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+
+
+Malformatted date
+2015-01-07 00:00:00 @ cell S2,2015-01-07 00:00:00 @ cell S3,2015-01-07 00:00:00 @ cell S4,2015-01-07 00:00:00 @ cell S5,2015-01-07 00:00:00 @ cell S6,2015-01-07 00:00:00 @ cell S7,2015-01-07 00:00:00 @ cell S8,2015-01-07 00:00:00 @ cell S9,2015-01-07 00:00:00 @ cell S10,2015-01-07 00:00:00 @ cell S11,2015-01-07 00:00:00 @ cell S12,2015-01-07 00:00:00 @ cell S13,2015-01-07 00:00:00 @ cell S14,2015-01-07 00:00:00 @ cell S15,2015-01-07 00:00:00 @ cell S16,2015-01-07 00:00:00 @ cell S17,2015-01-07 00:00:00 @ cell S18,2015-01-07 00:00:00 @ cell S19,2015-01-07 00:00:00 @ cell S20,2015-01-07 00:00:00 @ cell S21,2015-01-07 00:00:00 @ cell S22,2015-01-07 00:00:00 @ cell S23,2015-01-07 00:00:00 @ cell S24,2015-01-07 00:00:00 @ cell S25,2015-01-07 00:00:00 @ cell S26,2015-01-07 00:00:00 @ cell S27,2015-01-07 00:00:00 @ cell S28,2015-01-07 00:00:00 @ cell S29,2015-01-07 00:00:00 @ cell S30,2015-01-07 00:00:00 @ cell S31,2015-01-07 00:00:00 @ cell S32,2015-01-07 00:00:00 @ cell S33,2015-01-07 00:00:00 @ cell S34,2015-01-07 00:00:00 @ cell S35,2015-01-07 00:00:00 @ cell S36,2015-01-07 00:00:00 @ cell S37,2015-01-07 00:00:00 @ cell S38,2015-01-07 00:00:00 @ cell S39,2015-01-07 00:00:00 @ cell S40,2015-01-07 00:00:00 @ cell S41,2015-01-07 00:00:00 @ cell S42,2015-01-07 00:00:00 @ cell S43,2015-01-07 00:00:00 @ cell S44,2015-01-07 00:00:00 @ cell S45,2015-01-07 00:00:00 @ cell S46,2015-01-07 00:00:00 @ cell S47,2015-01-07 00:00:00 @ cell S48,2015-01-07 00:00:00 @ cell S49,2015-01-07 00:00:00 @ cell S50,2015-01-07 00:00:00 @ cell S51,2015-01-07 00:00:00 @ cell S52,2015-01-07 00:00:00 @ cell S53,2015-01-07 00:00:00 @ cell S54
+
+Malformatted date or before start date
+
+
+
+
+ 
+
+
+
+******Report for C - VYIF-Nepal - Deepesh.xlsx ******
+
+Agencies not in the reference:
+VYIF-Nepal,VYIF-Nepal,VYIF-Nepal,VYIF-Nepal
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+
+
+Malformed wards: 
+
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+Completed distributions,Completed distributions,Completed distributions,Completed distributions
+
+Malformatted date
+
+
+Malformatted date or before start date
+
+
+
+
+ 
+
+
+
+******Report for C - Welthungerhilfe - Deepesh.xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+('Dhading', 'None')
+
+Malformed wards: 
+
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+('200', 'None'),('200', 'None'),('200', 'None'),('200', 'None'),('200', 'None'),('100', 'None'),('200', 'None'),('160', 'None'),('110', 'None'),('400', 'None'),('50', 'None'),('1010', 'None'),('140', 'None'),('190', 'None'),('300', 'None'),('10', 'None'),('131', 'None'),('67', 'None'),('109', 'None'),('58', 'None'),('39', 'None'),('96', 'None'),('122', 'None'),('63', 'None'),('37', 'None'),('78', 'None'),('11', 'None'),('3', 'None'),('8', 'None'),('17', 'None'),('29', 'None'),('11', 'None'),('7', 'None'),('7', 'None'),('20', 'None'),('6', 'None'),('4', 'None'),('2', 'None'),('21', 'None'),('30', 'None'),('2', 'None'),('14', 'None'),('1', 'None'),('3', 'None'),('2', 'None'),('4', 'None'),('1', 'None'),('4', 'None'),('6', 'None'),('4', 'None'),('4', 'None'),('1', 'None'),('1', 'None'),('4', 'None'),('2', 'None'),('2', 'None'),('3', 'None'),('3', 'None'),('4', 'None'),('3', 'None'),('3', 'None'),('2', 'None'),('1', 'None')
+
+Total #HH and Vulnerable #HH conflict or issue 
+('200', 'None'),('200', 'None'),('200', 'None'),('200', 'None'),('200', 'None'),('100', 'None'),('200', 'None'),('160', 'None'),('110', 'None'),('400', 'None'),('50', 'None'),('1010', 'None'),('140', 'None'),('190', 'None'),('300', 'None'),('10', 'None'),('131', 'None'),('67', 'None'),('109', 'None'),('58', 'None'),('39', 'None'),('96', 'None'),('122', 'None'),('63', 'None'),('37', 'None'),('78', 'None'),('11', 'None'),('3', 'None'),('8', 'None'),('17', 'None'),('29', 'None'),('11', 'None'),('7', 'None'),('7', 'None'),('20', 'None'),('6', 'None'),('4', 'None'),('2', 'None'),('21', 'None'),('30', 'None'),('2', 'None'),('14', 'None'),('1', 'None'),('3', 'None'),('2', 'None'),('4', 'None'),('1', 'None'),('4', 'None'),('6', 'None'),('4', 'None'),('4', 'None'),('1', 'None'),('1', 'None'),('4', 'None'),('2', 'None'),('2', 'None'),('3', 'None'),('3', 'None'),('4', 'None'),('3', 'None'),('3', 'None'),('2', 'None'),('1', 'None')
+
+Activity Status not in Referece
+
+
+Malformatted date
+
+
+Malformatted date or before start date
+
+
+
+
+ 
+
+
+
+******Report for C -Child Space Foundation - Sushil.xlsx ******
+
+Agencies not in the reference:
+Childspace Foundation Nepal,Childspace Foundation Nepal,Childspace Foundation Nepal,Childspace Foundation Nepal,Childspace Foundation Nepal,Childspace Foundation Nepal,Childspace Foundation Nepal,Childspace Foundation Nepal,Childspace Foundation Nepal,Childspace Foundation Nepal,Childspace Foundation Nepal
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+
+
+Malformed wards: 
+
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+
+
+Malformatted date
+
+
+Malformatted date or before start date
+
+
+
+
+ 
+
+
+
+******Report for C -CRS-Caritas - Zineb.xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+
+
+Malformed wards: 
+(3 and 4)
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+Blank@ O3,Blank@ O4,Blank@ O5,Blank@ O6,Blank@ O8,Blank@ O9,Blank@ O10,Blank@ O11,Blank@ O13,Blank@ O14,Blank@ O15,Blank@ O16,Blank@ O18,Blank@ O19,Blank@ O20,Blank@ O21,Blank@ O22,Blank@ O23,Blank@ O24,Blank@ O25,Blank@ O26,Blank@ O27,Blank@ O28,Blank@ O29,Blank@ O30,Blank@ O31,Blank@ O32,Blank@ O33,Blank@ O34,Blank@ O35,Blank@ O36,Blank@ O37,Blank@ O38,Blank@ O39,Blank@ O40,Blank@ O41,Blank@ O42,Blank@ O43,Blank@ O44,Blank@ O45,Blank@ O46,Blank@ O47,Blank@ O48,Blank@ O49,Blank@ O50,Blank@ O51,Blank@ O52,Blank@ O53,Blank@ O54,Blank@ O56,Blank@ O57,Blank@ O58,Blank@ O59,Blank@ O60,Blank@ O61,Blank@ O62,Blank@ O63,Blank@ O64,Blank@ O65
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+
+
+Malformatted date
+
+
+Malformatted date or before start date
+None @ cell T38,None @ cell T39,None @ cell T56,None @ cell T57
+
+
+
+ 
+
+
+
+******Report for C -Habitat for humanity_Deepika.xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+('Dhading', 'None'),('Dhading', 'None'),('Dhading', 'None'),('Gorkha', 'None'),('Gorkha', 'None'),('Gorkha', 'None'),('Kabhrepalanchok', 'None'),('Kabhrepalanchok', 'None'),('Kabhrepalanchok', 'None'),('Kabhrepalanchok', 'None'),('Kabhrepalanchok', 'None'),('Kabhrepalanchok', 'None'),('Kabhrepalanchok', 'None'),('Kabhrepalanchok', 'None'),('Kabhrepalanchok', 'None'),('Kabhrepalanchok', 'None'),('Kabhrepalanchok', 'None'),('Kabhrepalanchok', 'None'),('Sindhupalchok', 'None'),('Sindhupalchok', 'None'),('Sindhupalchok', 'None'),('Sindhupalchok', 'sunkhani'),('Sindhupalchok', 'sunkhani'),('Sindhupalchok', 'sunkhani')
+
+Malformed wards: 
+(None),(None),(None),(None),(None),(None),(None),(None),(None),(None),(None),(None),(None),(None),(None),(None),(None),(None)
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+('1000', 'None'),('1000', 'None'),('1000', 'None'),('42', 'None'),('42', 'None'),('42', 'None'),('21', 'None'),('21', 'None'),('21', 'None')
+
+Total #HH and Vulnerable #HH conflict or issue 
+('1050', 'None'),('1050', 'None'),('47', '90'),('136', '617'),('100', '617'),('100', '617'),('100', 'None'),('6', 'None'),('6', 'None'),('6', 'None'),('72', 'None'),('72', 'None'),('72', '270'),('28', '270'),('28', '270'),('28', '108'),('100', '108'),('100', '108')
+
+Activity Status not in Referece
+Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,In-Country stock / Ongoing distributions,In-Country stock / Ongoing distributions,In-Country stock / Ongoing distributions
+
+Malformatted date
+
+
+Malformatted date or before start date
+None @ cell T47,None @ cell T48,None @ cell T49
+
+
+
+ 
+
+
+
+******Report for C -ISR-Nepal - Deepesh (FPIB2366's conflicted copy 2015-08-21).xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+
+
+Malformed wards: 
+
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+Completed distributions,Completed distributions,Completed distributions,Completed distributions
+
+Malformatted date
+
+
+Malformatted date or before start date
+
+

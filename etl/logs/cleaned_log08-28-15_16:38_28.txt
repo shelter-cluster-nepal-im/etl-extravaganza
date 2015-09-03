@@ -1,0 +1,680 @@
+******Report for C - CRS-Caritas - Deepika.xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+
+
+Malformed wards: 
+
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+Blank@ O3,Blank@ O4,Blank@ O5,Blank@ O6,Blank@ O8,Blank@ O9,Blank@ O10,Blank@ O11,Blank@ O13,Blank@ O14,Blank@ O15,Blank@ O16,Blank@ O18,Blank@ O19,Blank@ O20,Blank@ O21,Blank@ O22,Blank@ O23,Blank@ O24,Blank@ O25,Blank@ O26,Blank@ O27,Blank@ O28,Blank@ O29,Blank@ O30,Blank@ O31,Blank@ O32,Blank@ O33,Blank@ O34,Blank@ O35,Blank@ O36,Blank@ O37,Blank@ O38,Blank@ O39,Blank@ O40,Blank@ O41,Blank@ O42,Blank@ O43,Blank@ O44,Blank@ O45,Blank@ O46,Blank@ O47,Blank@ O48,Blank@ O49,Blank@ O50,Blank@ O51,Blank@ O52,Blank@ O53,Blank@ O54,Blank@ O56,Blank@ O57,Blank@ O58,Blank@ O59,Blank@ O60,Blank@ O61,Blank@ O62,Blank@ O63,Blank@ O64,Blank@ O65
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+
+
+Malformatted date
+
+
+Malformatted date or before start date
+None @ cell T38,None @ cell T39
+
+
+
+ 
+
+
+
+******Report for C - DAN Chruch Aid (DCA) - Deepesh.xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+('Lalitpur', 'None')
+
+Malformed wards: 
+
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+
+
+Malformatted date
+
+
+Malformatted date or before start date
+
+
+
+
+ 
+
+
+
+******Report for C - IOM - Deepesh.xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+
+
+Malformed wards: 
+
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+
+
+Malformatted date
+
+
+Malformatted date or before start date
+
+
+
+
+ 
+
+
+
+******Report for C - Peace Winds Japan - Deepesh.xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+
+
+Malformed wards: 
+
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+Completed distributions,Completed distributions,Completed distributions,In-Country stock / Ongoing distributions
+
+Malformatted date
+
+
+Malformatted date or before start date
+
+
+
+
+ 
+
+
+
+******Report for C - Polish Humaitarian Action - Deepesh.xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+
+
+Malformed wards: 
+
+
+Incorrect Action types:
+shelter,shelter,shelter,shelter,shelter,shelter
+
+Action descriptions not in action types:
+('shelter', 'Tarpaulin'),('shelter', 'Tarpaulin'),('shelter', 'Tarpaulin'),('shelter', 'Tarpaulin'),('shelter', 'Construction Materials (Excluding CGI and Fixings)'),('shelter', 'Tents')
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+Blank @ cellM13
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+Blank@ O10,Blank@ O11,Blank@ O12
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+
+
+Malformatted date
+
+
+Malformatted date or before start date
+
+
+
+
+ 
+
+
+
+******Report for C -ADRA - Deepika.xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+('Dhading', 'None'),('Dhading', 'None')
+
+Malformed wards: 
+
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+('465', 'None'),('6', 'None'),('300', 'None'),('185', 'None'),('90', 'None'),('475', 'None'),('475', 'None'),('660', 'None'),('758', 'None'),('300', 'None'),('894', 'None'),('504', 'None'),('1000', 'None'),('1000', 'None'),('731', 'None'),('1025', 'None'),('1025', 'None'),('300', 'None'),('150', 'None'),('15', 'None'),('1234', 'None'),('1234', 'None'),('307', 'None'),('307', 'None'),('700', 'None')
+
+Total #HH and Vulnerable #HH conflict or issue 
+('465', 'None'),('192', 'None'),('192', 'None'),('192', 'None'),('6', 'None'),('300', 'None'),('185', 'None'),('90', 'None'),('660', 'None'),('758', 'None'),('300', 'None'),('894', 'None'),('504', 'None'),('1000', 'None'),('1000', 'None'),('731', 'None'),('1025', 'None'),('1025', 'None'),('300', 'None'),('150', 'None'),('15', 'None'),('1234', 'None'),('1234', 'None'),('700', 'None'),('310', 'None'),('104', 'None'),('310', 'None'),('104', 'None'),('310', 'None'),('104', 'None'),('120', 'None'),('120', 'None'),('120', 'None'),('424', 'None'),('350', 'None')
+
+Activity Status not in Referece
+
+
+Malformatted date
+
+
+Malformatted date or before start date
+
+
+
+
+ 
+
+
+
+******Report for C -Childspace Foundation Nepal - Sushil.xlsx ******
+
+Agencies not in the reference:
+Childspace Foundation Nepal,Childspace Foundation Nepal,Childspace Foundation Nepal,Childspace Foundation Nepal,Childspace Foundation Nepal,Childspace Foundation Nepal,Childspace Foundation Nepal,Childspace Foundation Nepal,Childspace Foundation Nepal,Childspace Foundation Nepal,Childspace Foundation Nepal
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+
+
+Malformed wards: 
+
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+
+
+Malformatted date
+
+
+Malformatted date or before start date
+
+
+
+
+ 
+
+
+
+******Report for C -German GIZ - Deepika.xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+
+
+Malformed wards: 
+
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+
+
+Malformatted date
+
+
+Malformatted date or before start date
+
+
+
+
+ 
+
+
+
+******Report for C -GlobalMedic - Deepika.xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+
+
+Malformed wards: 
+(None),(None)
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+
+
+Malformatted date
+
+
+Malformatted date or before start date
+
+
+
+
+ 
+
+
+
+******Report for C -Medair MissionEast - Deepika.xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+
+
+Malformed wards: 
+
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+Blank@ O3,Blank@ O6,Blank@ O8,Blank@ O10,Blank@ O16,Blank@ O18,Blank@ O20
+
+Total #HH and Female #HH conflict or issue 
+('1253', 'None'),('1098', 'None'),('276', 'None'),('830', 'None'),('407', 'None'),('1240', 'None'),('1240', 'None'),('1045', 'None'),('1045', 'None')
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+
+
+Malformatted date
+
+
+Malformatted date or before start date
+
+
+
+
+ 
+
+
+
+******Report for C -Mercy Corps - Sushil.xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+('Bhaktapur', 'None'),('Kabhrepalanchok', 'ChalalGaneshsthan'),('Gorkha', 'None'),('Kabhrepalanchok', 'ChalalGaneshsthan'),('Kabhrepalanchok', 'ChalalGaneshsthan'),('Kabhrepalanchok', 'ChalalGaneshsthan'),('Kabhrepalanchok', 'ChyasingKharka'),('Kabhrepalanchok', 'ChyasingKharka'),('Kabhrepalanchok', 'ChyasingKharka'),('Kabhrepalanchok', 'ChyasingKharka'),('Kathmandu', 'None'),('Gorkha', 'None')
+
+Malformed wards: 
+
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)'),('NFI', 'Household kits (excluding tarpaulins)')
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+Blank@ N26,Blank@ N27,Blank@ N28,Blank@ N29,Blank@ N33,Blank@ N101,Blank@ N102,Blank@ N104,Blank@ N105
+
+Invalid numbers for Average cost per households (NPR)
+Blank@ O3,Blank@ O5,Blank@ O9,Blank@ O13,Blank@ O16,Blank@ O17,Blank@ O23,Blank@ O24,Blank@ O27,Blank@ O28,Blank@ O31,Blank@ O32,Blank@ O35,Blank@ O36,Blank@ O40,Blank@ O41,Blank@ O45,Blank@ O46,Blank@ O48,Blank@ O49,Blank@ O52,Blank@ O53,Blank@ O57,Blank@ O58,Blank@ O61,Blank@ O62,Blank@ O65,Blank@ O69,Blank@ O74,Blank@ O75,Blank@ O79,Blank@ O87,Blank@ O89,Blank@ O90,Blank@ O93,Blank@ O94,Blank@ O97,Blank@ O98,Blank@ O99,Blank@ O102,Blank@ O103,Blank@ O104,Blank@ O107,Blank@ O108,Blank@ O111,Blank@ O112,Blank@ O113,Blank@ O116,Blank@ O117,Blank@ O120,Blank@ O121,Blank@ O124,Blank@ O125,Blank@ O128,Blank@ O129
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+('76', 'None'),('73', 'None'),('84', 'None'),('207', 'None'),('100', 'None'),('2', 'None'),('20', 'None'),('130', 'None'),('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None'),('1247', 'None'),('1247', 'None'),('1247', 'None'),('None', 'None'),('846', 'None'),('769', 'None'),('769', 'None'),('769', 'None'),('20', 'None'),('1013', 'None'),('130', 'None'),('999', 'None'),('999', 'None'),('999', 'None'),('327', 'None'),('327', 'None'),('327', 'None'),('327', 'None'),('654', 'None'),('654', 'None'),('646', 'None'),('654', 'None'),('1229', 'None'),('1236', 'None'),('1236', 'None'),('1236', 'None'),('413', '547'),('60', 'None'),('35', 'None'),('20', 'None'),('50', 'None'),('125', 'None'),('1', 'None'),('55', 'None'),('8', 'None'),('20', 'None'),('20', 'None'),('1', 'None'),('0', 'None'),('10', 'None'),('60', 'None'),('25', 'None'),('100', 'None'),('6', 'None'),('10', 'None'),('45', 'None'),('4', 'None'),('1000', 'None'),('1000', 'None'),('1000', 'None'),('1000', 'None'),('1224', 'None'),('1224', 'None'),('0', 'None'),('1224', 'None'),('1225', 'None'),('None', 'None'),('None', 'None'),('50', 'None'),('None', 'None'),('None', 'None'),('0', 'None'),('1155', 'None'),('1162', 'None'),('1162', 'None'),('1162', 'None'),('1000', 'None'),('1000', 'None'),('1000', 'None'),('1000', 'None')
+
+Activity Status not in Referece
+
+
+Malformatted date
+None @ cell S26,None @ cell S27,None @ cell S28,None @ cell S29,None @ cell S33,None @ cell S34,None @ cell S43,None @ cell S101,None @ cell S102,None @ cell S104,None @ cell S105,None @ cell S119,None @ cell S120,None @ cell S121,None @ cell S122
+
+Malformatted date or before start date
+None @ cell T26,None @ cell T27,None @ cell T28,None @ cell T29,None @ cell T33,None @ cell T34,None @ cell T43,2015-05-20 00:00:00 @ cell T51,None @ cell T101,None @ cell T102,None @ cell T104,None @ cell T105,2015-07-14 00:00:00 @ cell T108,None @ cell T119,None @ cell T120,None @ cell T121,None @ cell T122
+
+
+
+ 
+

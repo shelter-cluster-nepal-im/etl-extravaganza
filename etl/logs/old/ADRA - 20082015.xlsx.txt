@@ -1,0 +1,56 @@
+***Report for ADRA - 20082015.xlsx
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+('Dhading', 'None'),('Dhading', 'None')
+
+Malformed wards: 
+1,4,5,4,8,9,3,5,1,2,3,4,5,6,9,1,2,3,4,5,6,9,4,6,1,7,9
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+('192', '51'),('192', '51'),('192', '51'),('104', '6'),('104', '6'),('104', '6'),('120', '26'),('120', '26'),('120', '26')
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+
+
+Malformatted date
+
+
+Malformatted date or before start date
+None @ cell T10,None @ cell T11,None @ cell T13,None @ cell T15,None @ cell T19,None @ cell T20,None @ cell T21,None @ cell T27,None @ cell T28,None @ cell T31,None @ cell T33,None @ cell T35
+

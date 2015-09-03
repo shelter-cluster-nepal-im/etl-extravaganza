@@ -1,0 +1,56 @@
+***Report for 
+
+Agencies not in the reference:
+None,None,None,None,None,None,None,None,None,None
+
+Sourcing Agencies set as INTERNAL:
+None,None,None,None,None,None,None,None
+
+Local Partner Agencies matched Implementing and were cleared
+None,None,None,None,None,None,None,None,None,None
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+None,None,None,None,None,None,None,None,None,None
+
+VDCs in incorrect districts:
+('None', 'None'),('None', 'None'),('None', 'None'),('Dhading', 'None'),('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None')
+
+Malformed wards: 
+(None),(None),(None),(None),(None),(None),(None),(None),(None),(None)
+
+Incorrect Action types:
+None,None,None,None,None,None,None,None,None,None
+
+Action descriptions not in action types:
+('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None')
+
+Targets not in Referece
+None,None,None,None,None,None,None,None,None,None
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+('200', 'None'),('200', 'None'),('200', 'None'),('200', 'None'),('200', 'None'),('1000', 'None'),('100', 'None'),('20', 'None'),('200', 'None'),('160', 'None'),('110', 'None'),('400', 'None'),('50', 'None'),('10', 'None'),('1010', 'None'),('140', 'None'),('190', 'None'),('300', 'None'),('10', 'None'),('131', 'None'),('67', 'None'),('109', 'None'),('58', 'None'),('39', 'None'),('96', 'None'),('122', 'None'),('63', 'None'),('37', 'None'),('78', 'None'),('11', 'None'),('3', 'None'),('8', 'None'),('17', 'None'),('29', 'None'),('11', 'None'),('7', 'None'),('7', 'None'),('20', 'None'),('6', 'None'),('4', 'None'),('2', 'None'),('21', 'None'),('30', 'None'),('2', 'None'),('14', 'None'),('1', 'None'),('3', 'None'),('2', 'None'),('4', 'None'),('1', 'None'),('4', 'None'),('6', 'None'),('4', 'None'),('4', 'None'),('1', 'None'),('1', 'None'),('4', 'None'),('2', 'None'),('2', 'None'),('3', 'None'),('3', 'None'),('4', 'None'),('3', 'None'),('3', 'None'),('2', 'None'),('1', 'None')
+
+Total #HH and Vulnerable #HH conflict or issue 
+('200', 'None'),('200', 'None'),('200', 'None'),('200', 'None'),('200', 'None'),('1000', 'None'),('100', 'None'),('20', 'None'),('200', 'None'),('160', 'None'),('110', 'None'),('400', 'None'),('50', 'None'),('10', 'None'),('1010', 'None'),('140', 'None'),('190', 'None'),('300', 'None'),('10', 'None'),('131', 'None'),('67', 'None'),('109', 'None'),('58', 'None'),('39', 'None'),('96', 'None'),('122', 'None'),('63', 'None'),('37', 'None'),('78', 'None'),('11', 'None'),('3', 'None'),('8', 'None'),('17', 'None'),('29', 'None'),('11', 'None'),('7', 'None'),('7', 'None'),('20', 'None'),('6', 'None'),('4', 'None'),('2', 'None'),('21', 'None'),('30', 'None'),('2', 'None'),('14', 'None'),('1', 'None'),('3', 'None'),('2', 'None'),('4', 'None'),('1', 'None'),('4', 'None'),('6', 'None'),('4', 'None'),('4', 'None'),('1', 'None'),('1', 'None'),('4', 'None'),('2', 'None'),('2', 'None'),('3', 'None'),('3', 'None'),('4', 'None'),('3', 'None'),('3', 'None'),('2', 'None'),('1', 'None')
+
+Activity Status not in Referece
+
+
+Malformatted date
+None @ cell S5,None @ cell S42,None @ cell S57,None @ cell S63,None @ cell S74,None @ cell S78,None @ cell S89,None @ cell S127,None @ cell S129,None @ cell S136
+
+Malformatted date or before start date
+None @ cell T5,None @ cell T42,None @ cell T57,None @ cell T63,None @ cell T74,None @ cell T78,None @ cell T89,None @ cell T127,None @ cell T129,None @ cell T136
+

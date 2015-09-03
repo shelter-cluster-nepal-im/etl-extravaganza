@@ -1,0 +1,56 @@
+***Report for Reporting ShelterCluster_SI 20082015.xlsx
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+('Sindhupalchok', 'Gorthali'),('Sindhupalchok', 'Gorthali'),('Sindhupalchok', 'Gorthali'),('Sindhupalchok', 'Gorthali'),('Sindhupalchok', 'Gorthali'),('Sindhupalchok', 'Gorthali'),('Sindhupalchok', 'Gorthali'),('Sindhupalchok', 'Gorthali'),('Sindhupalchok', 'Gorthali')
+
+Malformed wards: 
+2,4,6,8,8,2,3,4,6,7,8
+
+Incorrect Action types:
+Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution
+
+Action descriptions not in action types:
+('Distribution', 'CGI Bundle'),('Distribution', 'CGI Bundle'),('Distribution', 'CGI Bundle'),('Distribution', 'CGI Bundle'),('Distribution', 'CGI Bundle'),('Distribution', 'CGI Bundle'),('Distribution', 'CGI Bundle'),('Distribution', 'CGI Bundle'),('Distribution', 'CGI Bundle'),('Distribution', 'CGI Bundle'),('Distribution', 'CGI Bundle'),('Distribution', 'CGI Bundle'),('Distribution', 'CGI Bundle'),('Distribution', 'CGI Bundle'),('Distribution', 'CGI Bundle'),('Distribution', 'CGI Bundle'),('Distribution', 'CGI Bundle'),('Distribution', 'CGI Bundle'),('Distribution', 'CGI Bundle'),('Distribution', 'CGI Bundle'),('Distribution', 'CGI Bundle'),('Distribution', 'CGI Bundle'),('Distribution', 'CGI Bundle')
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+=N5,=,=,=,=,=,=,=,=N16,=N17,=,=,=,=,=,=,=
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+
+
+Malformatted date
+01.07.2015 @ cell S2,01.07.2015 @ cell S3,01.07.2015 @ cell S13,01.07.2015 @ cell S14,01.07.2015 @ cell S15
+
+Malformatted date or before start date
+
+

@@ -1,0 +1,180 @@
+******Report for C - CRS-Caritas - Deepika.xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+
+
+Malformed wards: 
+
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+Blank@ O3,Blank@ O4,Blank@ O5,Blank@ O6,Blank@ O8,Blank@ O9,Blank@ O10,Blank@ O11,Blank@ O13,Blank@ O14,Blank@ O15,Blank@ O16,Blank@ O18,Blank@ O19,Blank@ O20,Blank@ O21,Blank@ O22,Blank@ O23,Blank@ O24,Blank@ O25,Blank@ O26,Blank@ O27,Blank@ O28,Blank@ O29,Blank@ O30,Blank@ O31,Blank@ O32,Blank@ O33,Blank@ O34,Blank@ O35,Blank@ O36,Blank@ O37,Blank@ O38,Blank@ O39,Blank@ O40,Blank@ O41,Blank@ O42,Blank@ O43,Blank@ O44,Blank@ O45,Blank@ O46,Blank@ O47,Blank@ O48,Blank@ O49,Blank@ O50,Blank@ O51,Blank@ O52,Blank@ O53,Blank@ O54,Blank@ O56,Blank@ O57,Blank@ O58,Blank@ O59,Blank@ O60,Blank@ O61,Blank@ O62,Blank@ O63,Blank@ O64,Blank@ O65
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+
+
+Malformatted date
+
+
+Malformatted date or before start date
+None @ cell T38,None @ cell T39
+
+
+
+ 
+
+
+
+******Report for C - DAN Chruch Aid (DCA) - Deepesh.xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+('Lalitpur', 'None')
+
+Malformed wards: 
+
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+
+
+Malformatted date
+
+
+Malformatted date or before start date
+
+
+
+
+ 
+
+
+
+******Report for C - IOM - Deepesh.xlsx ******
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+
+
+Malformed wards: 
+
+
+Incorrect Action types:
+
+
+Action descriptions not in action types:
+
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+
+
+Malformatted date
+
+
+Malformatted date or before start date
+
+

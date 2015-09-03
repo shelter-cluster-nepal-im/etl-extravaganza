@@ -1,0 +1,56 @@
+***Report for Welthungerhilfe.xlsx
+
+Agencies not in the reference:
+None,None,None,None,None,None,None,None,None,None
+
+Sourcing Agencies set as INTERNAL:
+None,None,None,None,None,None,None,None
+
+Local Partner Agencies matched Implementing and were cleared
+None,None,None,None,None,None,None,None,None,None
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+None,None,None,None,None,None,None,None,None,None
+
+VDCs in incorrect districts:
+('None', 'None'),('None', 'None'),('None', 'None'),('Dhading', 'None'),('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None')
+
+Malformed wards: 
+None,None,None,None,None,None,None,None,None,None
+
+Incorrect Action types:
+None,None,None,None,None,None,None,None,None,None
+
+Action descriptions not in action types:
+('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None')
+
+Targets not in Referece
+None,None,None,None,None,None,None,None,None,None
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+=SUM(N2:N4),=SUM(N6:N41),=SUM(N43:N56),=SUM(N58:N62),=SUM(N64:N73),=SUM(N75:N77),=SUM(N79:N88),=SUM(N90:N126),=SUM(N128),=SUM(N137:N137)
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+('1042', '87'),('=SUM(N2:N4)', '=SUM(P2:P4)'),('1042', '87'),('298', '31'),('1000', '114'),('1000', '55'),('1000', '213'),('158', '25'),('171', '37'),('235', '31'),('110', '44'),('617', '70'),('188', '3'),('115', '8'),('119', '5'),('30', '7'),('20', '3'),('100', '6'),('100', '2'),('500', '56'),('=SUM(N6:N41)', '=SUM(P6:P41)'),('152', '22'),('16', '3'),('135', '33'),('15', '3'),('150', '17'),('40', '5'),('=SUM(N43:N56)', '=SUM(P43:P56)'),('=SUM(N64:N73)', '510'),('=SUM(N75:N77)', '30'),('=SUM(N79:N88)', '446'),('=SUM(N90:N126)', '86'),('=SUM(N128)', '=')
+
+Total #HH and Vulnerable #HH conflict or issue 
+('1042', '595'),('378', '86'),('=SUM(N2:N4)', '=SUM(Q2:Q4)'),('1042', '595'),('1000', '500'),('1000', '419'),('1000', '603'),('158', '82'),('110', '31'),('119', '78'),('188', '54'),('322', '92'),('20', '4'),('100', '90'),('203', '51'),('100', '99'),('=SUM(N6:N41)', '=SUM(Q6:Q41)'),('135', '20'),('150', '35'),('=SUM(N43:N56)', '=SUM(Q43:Q56)'),('=SUM(N64:N73)', '1650'),('=SUM(N75:N77)', '320'),('=SUM(N79:N88)', '800'),('=SUM(N90:N126)', '212'),('=SUM(N128)', '=')
+
+Activity Status not in Referece
+
+
+Malformatted date
+None @ cell S5,None @ cell S42,None @ cell S57,None @ cell S63,None @ cell S74,None @ cell S78,None @ cell S89,None @ cell S127,None @ cell S129,None @ cell S136
+
+Malformatted date or before start date
+None @ cell T5,None @ cell T42,None @ cell T57,None @ cell T63,None @ cell T74,None @ cell T78,None @ cell T89,None @ cell T127,None @ cell T129,None @ cell T136
+

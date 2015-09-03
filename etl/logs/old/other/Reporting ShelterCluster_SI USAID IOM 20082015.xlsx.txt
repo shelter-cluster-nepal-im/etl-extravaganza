@@ -1,0 +1,56 @@
+***Report for Reporting ShelterCluster_SI USAID IOM 20082015.xlsx
+
+Agencies not in the reference:
+
+
+Sourcing Agencies set as INTERNAL:
+
+
+Local Partner Agencies matched Implementing and were cleared
+
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+
+
+VDCs in incorrect districts:
+
+
+Malformed wards: 
+2,4,6,8,9,4,6
+
+Incorrect Action types:
+Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution
+
+Action descriptions not in action types:
+('Distribution', 'Tarpaulin'),('Distribution', 'Tarpaulin'),('Distribution', 'Tarpaulin'),('Distribution', 'Tarpaulin'),('Distribution', 'Tarpaulin'),('Distribution', 'Tarpaulin'),('Distribution', 'Tarpaulin'),('Distribution', 'Tarpaulin'),('Distribution', 'Tarpaulin'),('Distribution', 'Tarpaulin'),('Distribution', 'Tarpaulin'),('Distribution', 'Tarpaulin'),('Distribution', 'Tarpaulin'),('Distribution', 'Tarpaulin')
+
+Targets not in Referece
+
+
+Invalid numbers for # Items / # Man-hours / NPR
+
+
+Invalid numbers for Total Number Households
+
+
+Invalid numbers for Average cost per households (NPR)
+
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions,Completed distributions
+
+Malformatted date
+
+
+Malformatted date or before start date
+17.07.2015 @ cell T6,17.07.2015 @ cell T7,17.07.2015 @ cell T11,17.07.2015 @ cell T12
+

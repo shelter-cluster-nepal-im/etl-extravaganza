@@ -1,0 +1,56 @@
+***Report for UNHABITAT20.08.2015_15.xlsx
+
+Agencies not in the reference:
+UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,None,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,None,UN-Habitat,UN-Habitat,UN-Habitat,None,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,None,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,None,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,None,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,UN-Habitat,None,UN-Habitat,UN-Habitat
+
+Sourcing Agencies set as INTERNAL:
+None,None,None,None,None,None,None
+
+Local Partner Agencies matched Implementing and were cleared
+None,None,None,None,None,None,None
+
+IA contained in LPA for the following:
+
+
+Districts not in the reference:
+None,None,None,None,None,None,None
+
+VDCs in incorrect districts:
+('None', 'None'),('None', 'None'),('Bhaktapur', 'Bhaktapur municipality'),('Bhaktapur', 'Bhaktapur municipality'),('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None'),('None', 'None')
+
+Malformed wards: 
+None,None,None,None,None,Patan core are,None,None,None,Panga,None,None,None,None,Ward no.1,Ward no.2,None,None,Ward No.1,Ward No.2,Ward No.3,Ward No.4,Ward No.5,Ward No.6,Ward No.7,Ward No.8,Ward No.9,None,Ward No.1,Ward No.2,Ward No.3,Ward No.4,Ward No.5,Ward No.6,Ward No.7,Ward No.8,Ward No.9,None,Ward No.1,Ward No.2,Ward No.3,Ward No.4,Ward No.5,Ward No.6,Ward No.7,Ward No.8,Ward No.9,None,Ward No.1,Ward No.2,Ward No.3,Ward No.4,Ward No.5,Ward No.6,Ward No.7,Ward No.8,Ward No.9,None,Ward no.7,Ward no.7
+
+Incorrect Action types:
+Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,None,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,None,Distribution,Distribution,Distribution,None,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,None,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,None,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,None,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,Distribution,None,Distribution,Distribution
+
+Action descriptions not in action types:
+('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('None', 'None'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('None', 'None'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('None', 'None'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('None', 'None'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('None', 'None'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('None', 'None'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)'),('None', 'None'),('Distribution', 'CGI Bundle (72ft/bundle)'),('Distribution', 'CGI Bundle (72ft/bundle)')
+
+Targets not in Referece
+None,None,None,None,None,None,None
+
+Invalid numbers for # Items / # Man-hours / NPR
+Blank @ cellM8,Blank @ cellM15,Blank @ cellM19,Blank @ cellM29,Blank @ cellM39,Blank @ cellM49,Blank @ cellM59,=264*2,=206*2
+
+Invalid numbers for Total Number Households
+Blank@ N8,Blank@ N15,Blank@ N19,Blank@ N29,Blank@ N39,Blank@ N49,Blank@ N59
+
+Invalid numbers for Average cost per households (NPR)
+Blank@ O8,Blank@ O15,Blank@ O19,Blank@ O29,Blank@ O39,Blank@ O49,Blank@ O59
+
+Total #HH and Female #HH conflict or issue 
+
+
+Total #HH and Vulnerable #HH conflict or issue 
+
+
+Activity Status not in Referece
+
+
+Malformatted date
+2015-01-07 00:00:00 @ cell S2,2015-01-07 00:00:00 @ cell S3,2015-01-07 00:00:00 @ cell S4,2015-01-07 00:00:00 @ cell S5,2015-01-07 00:00:00 @ cell S6,2015-01-07 00:00:00 @ cell S7,None @ cell S8,2015-01-07 00:00:00 @ cell S9,2015-01-07 00:00:00 @ cell S10,2015-01-07 00:00:00 @ cell S11,2015-01-07 00:00:00 @ cell S12,2015-01-07 00:00:00 @ cell S13,2015-01-07 00:00:00 @ cell S14,None @ cell S15,2015-01-07 00:00:00 @ cell S16,2015-01-07 00:00:00 @ cell S17,2015-01-07 00:00:00 @ cell S18,None @ cell S19,2015-01-07 00:00:00 @ cell S20,2015-01-07 00:00:00 @ cell S21,2015-01-07 00:00:00 @ cell S22,2015-01-07 00:00:00 @ cell S23,2015-01-07 00:00:00 @ cell S24,2015-01-07 00:00:00 @ cell S25,2015-01-07 00:00:00 @ cell S26,2015-01-07 00:00:00 @ cell S27,2015-01-07 00:00:00 @ cell S28,None @ cell S29,2015-01-07 00:00:00 @ cell S30,2015-01-07 00:00:00 @ cell S31,2015-01-07 00:00:00 @ cell S32,2015-01-07 00:00:00 @ cell S33,2015-01-07 00:00:00 @ cell S34,2015-01-07 00:00:00 @ cell S35,2015-01-07 00:00:00 @ cell S36,2015-01-07 00:00:00 @ cell S37,2015-01-07 00:00:00 @ cell S38,None @ cell S39,2015-01-07 00:00:00 @ cell S40,2015-01-07 00:00:00 @ cell S41,2015-01-07 00:00:00 @ cell S42,2015-01-07 00:00:00 @ cell S43,2015-01-07 00:00:00 @ cell S44,2015-01-07 00:00:00 @ cell S45,2015-01-07 00:00:00 @ cell S46,2015-01-07 00:00:00 @ cell S47,2015-01-07 00:00:00 @ cell S48,None @ cell S49,2015-01-07 00:00:00 @ cell S50,2015-01-07 00:00:00 @ cell S51,2015-01-07 00:00:00 @ cell S52,2015-01-07 00:00:00 @ cell S53,2015-01-07 00:00:00 @ cell S54,2015-01-07 00:00:00 @ cell S55,2015-01-07 00:00:00 @ cell S56,2015-01-07 00:00:00 @ cell S57,2015-01-07 00:00:00 @ cell S58,None @ cell S59,2015-01-07 00:00:00 @ cell S60,2015-01-07 00:00:00 @ cell S61
+
+Malformatted date or before start date
+None @ cell T8,None @ cell T15,None @ cell T19,None @ cell T29,None @ cell T39,None @ cell T49,None @ cell T59
+
