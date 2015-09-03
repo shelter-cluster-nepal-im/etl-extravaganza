@@ -591,7 +591,7 @@ def fuzzy_match_col(col, vals):
 def xstr(conv):
     """return a properly encoded string"""
     try:
-        return conv.encode('utf8')
+        return str(conv.encode('utf8'))
     except:
         return str(conv)
 
