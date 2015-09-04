@@ -64,50 +64,49 @@ class Distributions(Base):
 
     __tablename__ = 'distributions'
 
-    priority = Column(String(250))
-    access_method = Column(String(250))
-    hub = Column(String(250))
-    as_of = Column(String(250))
-    dist_code = Column(String(250))
-    vdc_code = Column(String(250))
-    act_cat = Column(String(250))
-    imp_agency = Column(String(250))
-    source_agency = Column(String(250))
-    local_partner = Column(String(250))
-    contact_name = Column(String(250))
-    contact_email = Column(String(250))
-    contact_phone = Column(String(250))
-    district = Column(String(250))
-    vdc = Column(String(250))
-    ward = Column(String(250))
-    act_type = Column(String(250))
-    act_desc = Column(String(250))
-    targeting = Column(String(250))
+    priority = Column(String)
+    access_method = Column(String)
+    hub = Column(String)
+    as_of = Column(String)
+    dist_code = Column(String)
+    vdc_code = Column(String)
+    act_cat = Column(String)
+    imp_agency = Column(String)
+    source_agency = Column(String)
+    local_partner = Column(String)
+    contact_name = Column(String)
+    contact_email = Column(String)
+    contact_phone = Column(String)
+    district = Column(String)
+    vdc = Column(String)
+    ward = Column(String)
+    act_type = Column(String)
+    act_desc = Column(String)
+    targeting = Column(String)
     quantity = Column(Integer)
     total_hh = Column(Integer)
     avg_hh_cost = Column(Float)
     fem_hh = Column(Integer)
     vuln_hh = Column(Integer)
-    act_status = Column(String(250))
-    start_dt = Column(String(250))
-    comp_dt = Column(String(250))
-    comments = Column(String(250))
-    pk = Column(String(250), primary_key=True)
+    act_status = Column(String)
+    start_dt = Column(String)
+    comp_dt = Column(String)
+    comments = Column(String)
+    pk = Column(Integer, primary_key=True)
 
 @click.command()
 @click.option('--path', help = 'path to spreadsheet')
 def insert_data(path):
     """iterate over each row and add to db"""
-    path = "/Users/ewanog/tmp/simp.xlsx"
+    path = "/home/ec2-user/simp.xlsx"
     ws = etl.pull_wb(path, 'local').get_sheet_by_name('Distributions')
     locs = get_locs(ws)
 
     it=0
     for r in ws.rows[1:]:
-        print 'row'
-        it+=1
+        print 'row' + str(it)
         session.add(prep_row(r,locs))
-        if it % 400 == 0:
+        if it % 1 == 0:
             print 'commit'
             session.commit()
 
@@ -116,6 +115,7 @@ def check_zero_entries(r, locs, meta):
     """iterate through each value and see if any ints are Nones, set to 0"""
     for col in meta.columns:
         if isinstance(col.type, Integer) or isinstance(col.type, Float):
+	  if col.description != 'pk':
             if etl.xstr(r[locs[col.description]-1].value) == 'None':
                 r[locs[col.description]-1].value = '0'
 
@@ -154,8 +154,8 @@ def prep_row(r, locs):
     act_status=etl.xstr(r[locs["act_status"]-1].value),
     start_dt=etl.xstr(r[locs["start_dt"]-1].value),
     comp_dt=etl.xstr(r[locs["comp_dt"]-1].value),
-    comments=etl.xstr(r[locs["comments"]-1].value),
-    pk=gen_pk(r, locs))
+    comments=etl.xstr(r[locs["comments"]-1].value))
+   # pk=gen_pk(r, locs))
 
 def gen_pk(r, locs):
     return etl.xstr(r[locs["imp_agency"]-1].value)+etl.xstr(r[locs["local_partner"]-1].value)+etl.xstr(r[locs["district"]-1].value)+etl.xstr(r[locs["vdc"]-1].value)+etl.xstr(r[locs["ward"]-1].value)+etl.xstr(r[locs["act_type"]-1].value)+etl.xstr(r[locs["act_desc"]-1].value)+etl.xstr(r[locs["quantity"]-1].value)+etl.xstr(r[locs["total_hh"]-1].value)
@@ -196,7 +196,9 @@ def get_locs(ws):
 
 if __name__ == '__main__':
     if Base.metadata.tables.has_key('distributions'):
-        Base.metadata.tables['distributions'].drop(engine)
+	print 'yes'
+	print Base.metadata.tables
+        Base.metadata.tables['distributions'].drop(engine, checkfirst = True)
     Base.metadata.create_all(engine)
     insert_data()
     print 'done'
