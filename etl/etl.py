@@ -47,10 +47,11 @@ def iterate_reports(act, src, path, db, test):
 
     file_list = get_file_list(path, src)
 
+    file_list = clean_exclude(act, file_list)
+
     if test == True:
         file_list = [file_list[0]]
 
-    file_list = clean_exclude(act, file_list)
 
     for v in file_list:
         print v
@@ -451,7 +452,7 @@ def report_a_log(log_value, path):
         current_path = path
         
         #write out
-        with open('/Users/ewanog/code/nepal-earthquake/shelter/etl/etl/logs/cleaned_log'+
+        with open('/Users/ewanog/code/nepal-earthquake/shelter/etl-extravaganza/etl/logs/'+
             time.strftime("%m-%d-%y_%H:%M_%S") +'.txt', 'w') as f:
             for log in current_log:
                 f.write(str(log)+'\n')

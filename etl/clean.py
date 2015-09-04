@@ -26,7 +26,7 @@ def algo2(db,ref):
     for row in db.iter_rows(db_col_loc_impl + "2:" + 
         etl.find_last_value(db, db_col_loc_source, 'c')):
             if row[0].value == row[1].value:
-                vals_changed.append(str(row[1].value))
+                vals_changed.append(etl.xstr(row[1].value))
                 row[1].value = 'INTERNAL'
     return db, ref, 'Sourcing Agencies set as INTERNAL:\n' + ','.join(vals_changed)
 
@@ -52,8 +52,8 @@ def algo4(db,ref):
 
     for row in db.iter_rows(db_col_loc_a + "2:" + 
         etl.find_last_value(db, db_col_loc_c, 'c')):
-            if str(row[0].value) == str(row[2].value):
-                vals_changed.append(str(row[2].value))
+            if etl.xstr(row[0].value) == etl.xstr(row[2].value):
+                vals_changed.append(etl.xstr(row[2].value))
                 row[2].value = ''
 
     return db, ref, 'Local Partner Agencies matched Implementing and were cleared\n' + ','.join(vals_changed)
@@ -66,7 +66,7 @@ def algo5(db,ref):
 
     for row in db.iter_rows(db_col_loc_a + "2:" + 
         etl.find_last_value(db, db_col_loc_c, 'c')):
-            if str(row[0].value) in str(row[2].value) and str(row[0].value) != str(row[2].value):
+            if etl.xstr(row[0].value) in etl.xstr(row[2].value) and etl.xstr(row[0].value) != etl.xstr(row[2].value):
                 vals_changed.append(row[2].value)
                 row[2].value = row[2].value.replace(row[0].value,'').replace(' ','').replace(',','').replace('-','')
 
@@ -91,25 +91,25 @@ def algo7(db,ref):
     db_tuple = []
     for row in db.iter_rows(db_dist_loc + "2:" + 
         etl.find_last_value(db, db_vdc_loc, 'c')):
-            db_tuple.append((str(row[0].value), str(row[1].value)))
+            db_tuple.append((etl.xstr(row[0].value), etl.xstr(row[1].value)))
 
     ref_tuple = []
     #do it just for dist, then for vdc as they're not neighbors
     for row in ref.iter_rows('E2:' + 
         etl.find_last_value(ref, 'E', 'c')):
-            ref_tuple.append((str(row[0].value),))
+            ref_tuple.append((etl.xstr(row[0].value),))
  
     it = 0
     for row in ref.iter_rows(ref_vdc_loc + "2:" + 
         etl.find_last_value(ref, ref_vdc_loc, 'c')):
-            ref_tuple[it]+=(str(row[0].value.encode("utf8")),)
+            ref_tuple[it]+=(etl.xstr(row[0].value.encode("utf8")),)
             it+=1
 
     #iterate through db_tuple and see if tuple is in ref
     malformed_vdc = []
     for tup in db_tuple:
         if tup not in ref_tuple:
-            malformed_vdc.append(str(tup))
+            malformed_vdc.append(etl.xstr(tup))
 
     return db, ref, 'VDCs in incorrect districts:\n' + ','.join(malformed_vdc)
 
@@ -155,23 +155,23 @@ def algo10(db,ref):
     #go through action types and go through respected cols and make tuples
     for row in ref.iter_rows(ref_col_loc + "2:" + 
         etl.find_last_value(ref, ref_col_loc, 'c')):
-            act = str(row[0].value)
+            act = etl.xstr(row[0].value)
             act_col = etl.find_in_header(ref, act)
             for row in ref.iter_rows(act_col + "2:" + 
                 etl.find_last_value(ref, act_col, 'c')):
-                    act_types_tups.append((act, str(row[0].value)))
+                    act_types_tups.append((act, etl.xstr(row[0].value)))
 
     #get tuples of dist actions
     type_desc_tup = []
     for row in db.iter_rows(db_type_loc + "2:" + 
         etl.find_last_value(db, db_desc_loc, 'c')):
-            type_desc_tup.append((str(row[0].value),str(row[1].value)))
+            type_desc_tup.append((etl.xstr(row[0].value),etl.xstr(row[1].value)))
 
     malformed_acts = []
     #go through dist actions and see if they're in ref tuples
     for tup in type_desc_tup:
         if tup not in act_types_tups:
-            malformed_acts.append(str(tup))
+            malformed_acts.append(etl.xstr(tup))
 
     return db, ref, 'Action descriptions not in action types:\n' + ','.join(malformed_acts)
 
@@ -190,11 +190,11 @@ def algo12(db,ref):
 
     for row in db.iter_rows(db_col_loc + "2:" + 
         etl.find_last_value(db, db_col_loc, 'c')):
-            if not str(row[0].value).isdigit():
+            if not etl.xstr(row[0].value).isdigit():
                 if row[0].value == None:
                     bad_vals.append('Blank @ cell' + row[0].coordinate)
                 else:
-                    bad_vals.append(str(row[0].value))
+                    bad_vals.append(etl.xstr(row[0].value))
 
     return db, ref, 'Invalid numbers for # Items / # Man-hours / NPR\n' + ','.join(bad_vals)
 
@@ -205,11 +205,11 @@ def algo13(db,ref):
 
     for row in db.iter_rows(db_col_loc + "2:" + 
         etl.find_last_value(db, db_col_loc, 'c')):
-            if not str(row[0].value).isdigit():
+            if not etl.xstr(row[0].value).isdigit():
                 if row[0].value == None:
                     bad_vals.append('Blank@ ' + row[0].coordinate)
                 else:
-                    bad_vals.append(str(row[0].value))
+                    bad_vals.append(etl.xstr(row[0].value))
 
     return db, ref, 'Invalid numbers for Total Number Households\n' + ','.join(bad_vals)
 
@@ -220,11 +220,11 @@ def algo14(db,ref):
 
     for row in db.iter_rows(db_col_loc + "2:" + 
         etl.find_last_value(db, db_col_loc, 'c')):
-            if not str(row[0].value).isdigit():
+            if not etl.xstr(row[0].value).isdigit():
                 if row[0].value == None:
                     bad_vals.append('Blank@ ' + row[0].coordinate)
                 else:
-                    bad_vals.append(str(row[0].value))
+                    bad_vals.append(etl.xstr(row[0].value))
 
 
     return db, ref, 'Invalid numbers for Average cost per households (NPR)\n' + ','.join(bad_vals)
@@ -239,21 +239,21 @@ def algo15(db,ref):
     cnt_vals = []
     for row in db.iter_rows(db_cnt_loc + "2:" + 
         etl.find_last_value(db, db_cnt_loc, 'c')):
-            cnt_vals.append(str(row[0].value))
+            cnt_vals.append(etl.xstr(row[0].value))
 
     #get female values
     fem_vals = []
     for row in db.iter_rows(db_fem_loc + "2:" + 
         etl.find_last_value(db, db_fem_loc, 'c')):
-            fem_vals.append(str(row[0].value))
+            fem_vals.append(etl.xstr(row[0].value))
 
     malformatted = []
     #zip and check values
     for vals in zip(cnt_vals, fem_vals):
         if not (vals[0].isdigit() and vals[1].isdigit()):
-            malformatted.append(str(vals))
+            malformatted.append(etl.xstr(vals))
         elif int(vals[1]) > int(vals[0]):
-            malformatted.append(str(vals))
+            malformatted.append(etl.xstr(vals))
 
     return db, ref, 'Total #HH and Female #HH conflict or issue \n' + ','.join(malformatted)
 
@@ -267,21 +267,21 @@ def algo16(db,ref):
     cnt_vals = []
     for row in db.iter_rows(db_cnt_loc + "2:" + 
         etl.find_last_value(db, db_cnt_loc, 'c')):
-            cnt_vals.append(str(row[0].value))
+            cnt_vals.append(etl.xstr(row[0].value))
 
     #get female values
     vul_vals = []
     for row in db.iter_rows(db_vul_loc + "2:" + 
         etl.find_last_value(db, db_vul_loc, 'c')):
-            vul_vals.append(str(row[0].value))
+            vul_vals.append(etl.xstr(row[0].value))
 
     malformatted = []
     #zip and check values
     for vals in zip(cnt_vals, vul_vals):
         if not (vals[0].isdigit() and vals[1].isdigit()):
-            malformatted.append(str(vals))
+            malformatted.append(etl.xstr(vals))
         elif int(vals[1]) > int(vals[0]):
-            malformatted.append(str(vals))
+            malformatted.append(etl.xstr(vals))
 
     return db, ref, 'Total #HH and Vulnerable #HH conflict or issue \n' + ','.join(malformatted)
 
@@ -304,7 +304,7 @@ def algo18(db,ref):
 
     for row in db.iter_rows(date_col_loc + "2:" +
                                     etl.find_last_value(db, date_col_loc, 'c')):
-        cur = str(row[0].value)
+        cur = etl.xstr(row[0].value)
         try:
             if parse(cur) < parse('4-25-2015'):
                 bad_date.append(cur + ' @ cell ' + row[0].coordinate)
@@ -322,9 +322,9 @@ def algo19(db,ref):
 
     for row in db.iter_rows(comp_col_loc + "2:" + 
         etl.find_last_value(db, comp_col_loc, 'c')):
-            cur = str(row[0].value)
+            cur = etl.xstr(row[0].value)
             try:
-                if parse(cur) < parse('4-25-2015') or parse(cur) < parse(str(db[start_col_loc+str(row[0].row)].value)):
+                if parse(cur) < parse('4-25-2015') or parse(cur) < parse(etl.xstr(db[start_col_loc+etl.xstr(row[0].row)].value)):
                     bad_date.append(cur + ' @ cell ' + row[0].coordinate)
             except Exception, e:
                 bad_date.append(cur + ' @ cell ' + row[0].coordinate)
