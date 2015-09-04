@@ -6,5 +6,5 @@ setup(name='etl',
       author='Ewan Oglethorpe',
       author_email='ewanogle@gmail.com',
       packages = ['etl'], 
-      install_requires = ['dropbox', 'openpyxl','click', 'sqlalchemy']
+      install_requires = ['dropbox', 'openpyxl','click', 'sqlalchemy','python-dateutil','psycopg2']
 )

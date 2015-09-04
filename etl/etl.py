@@ -11,6 +11,8 @@
 ##logs output to local or dbox
 ##do quick reading method at first for faster run time
 ##fuzzy match col
+##single method to import all file(s) from a path
+
 
 import datetime
 
@@ -47,6 +49,8 @@ def iterate_reports(act, src, path, db, test):
 
     if test == True:
         file_list = [file_list[0]]
+
+    file_list = clean_exclude(act, file_list)
 
     for v in file_list:
         print v
@@ -89,7 +93,7 @@ def clean_exclude(act, file_list):
                 new_list.append(v)
             else:
                 print 'Excluding: ' + v
-        file_list = new_list
+        return new_list
 
 def consolidate(baseline, wbs, key_col):
     """consolidate baseline data and worksheets into one sheet 
