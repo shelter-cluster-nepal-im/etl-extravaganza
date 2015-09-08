@@ -18,8 +18,8 @@ from openpyxl.cell import column_index_from_string
 
 
 #SQLA
-Base = declarative_base()
 engine = create_engine('postgresql://shelter:clusterdata@sheltercluster.ci0kkoh87sga.us-east-1.rds.amazonaws.com:5432/shelter')
+Base = declarative_base(engine)
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
@@ -196,8 +196,6 @@ def get_locs(ws):
 
 if __name__ == '__main__':
     if Base.metadata.tables.has_key('distributions'):
-	print 'yes'
-	print Base.metadata.tables
         Base.metadata.tables['distributions'].drop(engine, checkfirst = True)
     Base.metadata.create_all(engine)
     insert_data()

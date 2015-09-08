@@ -97,8 +97,7 @@ def clean_exclude(act, file_list):
         return new_list
 
 def consolidate(baseline, wbs, key_col):
-    """consolidate baseline data and worksheets into one sheet 
-        and remove duplicates"""
+    """consolidate baseline data and worksheets and remove old entries"""
 
     print 'in consolidate'
 
@@ -559,6 +558,7 @@ def wb_strip(location, src):
         w = load_workbook(location, read_only = True, data_only = True)
 
     new_wb = Workbook()
+    new_wb.remove_sheet(new_wb.worksheets[0])
     for v in w.worksheets:
         cur_w = new_wb.create_sheet(1, v.title)
         for r in v.rows:
