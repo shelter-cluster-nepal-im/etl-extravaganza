@@ -2,12 +2,12 @@ import unittest
 import etl
 from openpyxl import load_workbook
 from openpyxl import Workbook
-
+from collections import Counter
 import os 
 
 
-sample_wb_new_format = load_workbook('/Users/ewanog/code/nepal-earthquake/shelter/etl/clean_test.xlsx', data_only = True)
-sample_wb = load_workbook('/Users/ewanog/code/nepal-earthquake/shelter/etl/etl_test.xlsx')
+sample_wb_new_format = load_workbook('/Users/ewanog/code/nepal-earthquake/shelter/etl-extravaganza/clean_test.xlsx', data_only = True)
+sample_wb = load_workbook('/Users/ewanog/code/nepal-earthquake/shelter/etl-extravaganza/etl_test.xlsx')
 db = sample_wb.get_sheet_by_name('Database')
 ref = sample_wb.get_sheet_by_name('Reference')
 
@@ -48,55 +48,94 @@ class TestEtl(unittest.TestCase):
         assert os.path.exists('/Users/ewanog/code/nepal-earthquake/shelter/etl/etl/logs/cleaned_log.txt')
 
     def test_consolidate(self):
+        #scenarios are: new agency, agency that is > 80pct inserted, agency <80 pct
         #create historical db
         db = Workbook().active
-        db.append(("Implementing agency", "Local partner agency" , "District", 
-            "VDC / Municipalities", "Municipal Ward", "Action type", 
-            "Action description", "# Items / # Man-hours / NPR",
-            "Total Number Households"))
-        db.append(('val', 'key', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'Last'))
-        db.append(('dup1', 'dupkey1', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'Last'))
-        db.append(('row2val', 'key1', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'Last'))
-        db.append(('row3val', 'key2', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'Last'))
-        db.append(('dup2', 'dupkey2', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'Last'))
+        db.append(("Implementing agency", "dummy"))
 
-        #create two sheets to add
+        #other agency
+        for i in xrange(10):
+            db.append(('agency_not_inserting','dummy'))
+
+        #agency over 80
+        for i in xrange(5):
+            db.append(('agency_existing_over_80','dummy'))
+
+        #agency under 80
+        for i in xrange(40):
+            db.append(('agency_existing_under_80','dummy'))
+
+        #create agency not in db
         wb1 = Workbook()
         wb1.create_sheet(2, 'Distributions')
         ws1 = wb1.get_sheet_by_name('Distributions')
-        ws1.append(("Implementing agency", "Local partner agency" , "District",
-            "VDC / Municipalities", "Municipal Ward", "Action type", 
-            "Action description", "# Items / # Man-hours / NPR",
-            "Total Number Households"))
-        ws1.append(('val', 'key', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'Last'))
-        ws1.append(('dup1', 'dupkey1', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'Last'))
-        ws1.append(('notdupedws1', 'notdupedvalws1', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'Last'))
+        ws1 .append(("Implementing agency", "dummy"))
+        for i in xrange(5):
+            ws1.append(("madnewagency", "dummy"))
 
+        #create agency in db >80
         wb2 = Workbook()
-        wb2.create_sheet(1, 'Distributions')
+        wb2.create_sheet(2, 'Distributions')
         ws2 = wb2.get_sheet_by_name('Distributions')
-        ws2.title = 'Distributions'
-        ws2.append(("Implementing agency", "Local partner agency" , "District", 
-            "VDC / Municipalities", "Municipal Ward", "Action type", 
-            "Action description", "# Items / # Man-hours / NPR",
-            "Total Number Households"))
-        ws2.append(('val', 'key', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'Last'))
-        ws2.append(('dup2', 'dupkey2', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'Last'))
-        ws2.append(('notdupedws2', 'notdupedvalws2', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'Last'))
+        ws2 .append(("Implementing agency", "dummy"))
+        for i in xrange(50):
+            ws2.append(("agency_existing_over_80", "dummy"))
 
-        #weird bug
-        wb2.get_sheet_by_name('Distributions1').title = 'Distributions'
-        print 'in test: ' + str(wb1.get_sheet_names())
-        print 'in test2: ' + str(wb2.get_sheet_names())
+        #create agency in db <80
+        wb3 = Workbook()
+        wb3.create_sheet(2, 'Distributions')
+        ws3 = wb3.get_sheet_by_name('Distributions')
+        ws3 .append(("Implementing agency", "dummy"))
+        for i in xrange(4):
+            ws3.append(("agency_existing_under_80", "dummy"))
 
-        cons = etl.consolidate(db, (wb1, wb2), 'J')
+        #create another agency NOT in db
+        wb4 = Workbook()
+        wb4.create_sheet(2, 'Distributions')
+        ws4 = wb4.get_sheet_by_name('Distributions')
+        ws4 .append(("Implementing agency", "dummy"))
+        for i in xrange(25):
+            ws4.append(("datnewnew", "dummy"))
+
+
+        #final counts should be:
+        #other agency: 10 (agency_not_inserting)
+        #agency over 80: 50 (agency_existing_over_80)
+        #agnecy under 80: 40 (agency_existing_under_80)
+        #new agency: 25 (datnewnew)
+        #other new agency: 5 (madnewagency)
+
+        cons = etl.consolidate(db, (wb1, wb2, wb3, wb4))
         cons_sheet = cons.get_sheet_by_name('Consolidated')
+        r = etl.get_values(cons_sheet.columns[0])
+        c = Counter(r)
+        print c
 
-        self.assertEqual(set(etl.get_values(cons_sheet.columns[9])), 
-            (set(['None', 'valkeyNoneNoneNoneNoneNoneNoneNone','row2valkey1NoneNoneNoneNoneNoneNoneNone',
-                'row3valkey2NoneNoneNoneNoneNoneNoneNone','dup1dupkey1NoneNoneNoneNoneNoneNoneNone',
-                'notdupedws1notdupedvalws1NoneNoneNoneNoneNoneNoneNone','dup2dupkey2NoneNoneNoneNoneNoneNoneNone',
-                'notdupedws2notdupedvalws2NoneNoneNoneNoneNoneNoneNone'])))
+        self.assertEqual(c['agency_not_inserting'], 10)
+        self.assertEqual(c['agency_existing_over_80'], 50)
+        self.assertEqual(c['agency_existing_under_80'], 40)
+        self.assertEqual(c['datnewnew'], 25)
+        self.assertEqual(len(r), 130+1) #+1 for header
+
+    def test_mismatch_header_cons(self):
+       #create agency not in db
+        wb1 = Workbook()
+        wb1.create_sheet(2, 'Distributions')
+        ws1 = wb1.get_sheet_by_name('Distributions')
+        ws1 .append(("not ", "matching"))
+        for i in xrange(5):
+            ws1.append(("madnewagency", "dummy"))
+
+        #create agency in db >80
+        wb2 = Workbook()
+        wb2.create_sheet(2, 'Distributions')
+        ws2 = wb1.get_sheet_by_name('Distributions')
+        ws2 .append(("no", "way"))
+        for i in xrange(50):
+            ws2.append(("agency_existing_over_80", "dummy"))
+
+        r = etl.consolidate(wb1,(wb2))
+        self.assertEqual(len(r.rows), 5)
 
     def test_get_values(self):
         db = Workbook().active

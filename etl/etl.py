@@ -12,7 +12,7 @@
 ##do quick reading method at first for faster run time
 ##fuzzy match col
 ##single method to import all file(s) from a path
-
+from collections import Counter
 
 import datetime
 
@@ -30,6 +30,7 @@ import click
 from os import listdir
 from os.path import isfile, join
 from dateutil.parser import parse
+from openpyxl.utils import get_column_letter
 
 #dropbox setup
 db_access = os.environ['db_access']
@@ -84,7 +85,7 @@ def iterate_reports(act, src, path, db, test):
     elif act == 'cons':
         #consolidate
         to_send = consolidate(pull_wb(db, src).get_sheet_by_name('Database'), wbs, 'V')
-        send_wb(path + 'merged.xlsx', to_send, src)
+        send_wb(path + 'consolidated.xlsx', to_send, src)
 
 def clean_exclude(act, file_list):
     if act =='clean':
@@ -96,66 +97,60 @@ def clean_exclude(act, file_list):
                 print 'Excluding: ' + v
         return new_list
 
-def consolidate(baseline, wbs, key_col):
+def consolidate(baseline, wsl):
     """consolidate baseline data and worksheets and remove old data"""
 
-    print 'in consolidate'
+    ialoc = find_in_header(baseline,'Implementing Agency')
+    base_count = Counter(get_values(baseline.columns[column_index_from_string(ialoc)-1]))
 
     cons_wb = Workbook()
     cons = cons_wb.active
     cons.title = 'Consolidated'
-    cons.append(get_values(baseline.rows[0]) + ['UID'])
+    cons.append(get_values(baseline.rows[0]))
 
-    print 'step1'
+    to_add = []
+    ag_skip = []
 
-    merge_sheets = []
-    #pull out desired worksheet
-    for wb in wbs:
-        print 'step2'
-        merge_sheets.append(wb[0].get_sheet_by_name('Distributions'))
+    #iterate through each sheet and find entries to be added
+    for ws in wsl:
+        cd = ws.get_sheet_by_name('Distributions')
+        ag_name = cd[str(ialoc + '2')].value
+        #check if headers match
+        if get_values(cd.rows[0]) != get_values(baseline.rows[0]):
+            print '***ERROR: Non-matching header for: ' + xstr(cd[str(ialoc + '2')].value)
+        else:
+            #check to see if agency is in list and if it is < 80 pct
+            if base_count.has_key(ag_name):
+                if len(cd.rows) < base_count[ag_name]*.8:
+                    print '***WARNING: ' + ag_name + ' is less than 80 pct'
+                else:
+                    print 'inserting ' + str(len(cd.rows)-1) + ' new values for and removing old for: ' + ag_name
+                    ag_skip.append(xstr(ag_name))
+                    for r in cd.rows[1:]:
+                        to_add.append(get_values(r))
+            else:
+                print 'inserting ' + str(len(cd.rows)-1) + ' new values for new agency: ' + ag_name
+                for r in cd.rows[1:]:
+                    to_add.append(get_values(r))
 
-    print 'step3'
+    #create master file
+    #this could be better with grouping
+    cs = ''
+    for v in baseline.rows[1:]:
+        if xstr(v[column_index_from_string(ialoc)-1].value) not in ag_skip:
+            cons.append(v)
+        else:
+            if cs != v[column_index_from_string(ialoc)-1].value:
+                print 'skipping ' + str(base_count[v[column_index_from_string(ialoc)-1].value]) + ' rows for ' + xstr(v[column_index_from_string(ialoc)-1].value)
+                cs = xstr(v[column_index_from_string(ialoc)-1].value)
 
-    #read in baseline db and new WSs into dictionaries
-    base_dict = {}
-    merge_sheets_dict = {}
-    key_loc = column_index_from_string(key_col)-1
-
-    print 'step4'
-
-
-    #add in UID value for sheets
-    #there is a problem where imaginary columns are being returned by .rows, so we find the
-    #max value of the header and only look for values of that row that extend out to that column
-    for wb in merge_sheets:
-        print 'step5'
-        max_val = len(wb.rows[0])
-        for r in wb.rows[1:]:
-            wb[key_col + xstr(r[0].row)] = get_uid(r[0:max_val], wb)
-
-
-    print 'in 1'
-
-    #add UID for baseline
-    max_val = len(baseline.rows[0])
-    for r in baseline.rows[1:]:
-        baseline[key_col + xstr(r[0].row)] = get_uid(r[0:max_val], baseline)
-    print 'in 2'
-
-    #iterate through each wb and add to base_dict while removing old entries
-    for wb in merge_sheets:
-        False
-
-
-    #now, add baseline and then wbs to cons
-    for v in base_dict.values():
+    #add in new agency info
+    for v in to_add:
         cons.append(v)
-    print 'in 6'
 
-    for v in merge_sheets_dict.values():
-        cons.append(v)
-    
     return cons_wb
+
+
 
 def none_row(val):
     i = (val+val).find(val, 1, -1)
@@ -246,11 +241,7 @@ def get_uid(row, sheet):
 
 def get_values(r):
     """returns values of a row or a column"""
-    ret = []
-    for v in r:
-        ret.append(xstr(v.value))
-
-    return ret
+    return [xstr(v.value) for v in r]
 
 def send_wb(path, wb, src):
     print 'Sending: ' + path
@@ -463,40 +454,16 @@ def colvals_notincol(sheet_val,col_val,sheet_ref,col_ref):
 
 
 def find_last_value(sheet, start_location, r_or_c):
-    """find position of last value in a given row or column"""
+    """find position of last value in a given row or column - if row, we assume header"""
     #extract form r_or_c if we should be iterating a row or column
-    
-    row_it = 0
-    col_it = 0
+     #this has been deprecated in favor of openpyxl features - all methods should change their calls
+
     if r_or_c == 'c':
-        row_it = 1
+        return start_location + str(sheet.max_row)
     elif r_or_c == 'r':
-        col_it = 1
+        return get_column_letter(sheet.max_column) + '1'
     else:
         raise Exception("r_or_c must be r or c!")
-    
-    #look for a cell without value, and if we find a blank, traverse 100 more
-    #to make sure there's no blanks
-    blank_count = 0
-    found = False
-    cur_cell = sheet[start_location+'1']
-    while not found:
-        cur_cell = cur_cell.offset(row = row_it, column = col_it)
-
-        if not cur_cell.value:
-            if blank_count == 0:
-                #coord of a cell step back 1
-                last_found = cur_cell.offset(row = -row_it, column= -col_it).coordinate
-                blank_count+=1
-
-            elif blank_count == 100:
-                found = True
-            else:
-                blank_count+=1
-        else:
-            blank_count=0
-
-    return last_found
 
 
 def pull_wb(location, src):
