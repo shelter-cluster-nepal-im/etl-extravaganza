@@ -111,6 +111,9 @@ def insert_data(path, location):
             print 'commit'
             session.commit()
 
+    #catch any leftover rows
+    session.commit()
+
 
 def check_zero_entries(r, locs, meta):
     """iterate through each value and see if any ints are Nones, set to 0"""
