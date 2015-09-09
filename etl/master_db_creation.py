@@ -104,9 +104,10 @@ def insert_data(path, location):
 
     it=0
     for r in ws.rows[1:]:
+        it+=1
         print 'row' + str(it)
         session.add(prep_row(r,locs))
-        if it % 1 == 0:
+        if it % 100 == 0:
             print 'commit'
             session.commit()
 
