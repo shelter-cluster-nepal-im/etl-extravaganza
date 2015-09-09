@@ -96,10 +96,10 @@ class Distributions(Base):
 
 @click.command()
 @click.option('--path', help = 'path to spreadsheet')
+@click.option('--location', help = 'locaiton of spreadsheet')
 def insert_data(path):
     """iterate over each row and add to db"""
-    path = "/home/ec2-user/simp.xlsx"
-    ws = etl.pull_wb(path, 'local').get_sheet_by_name('Distributions')
+    ws = etl.pull_wb(path, location).get_sheet_by_name('Distributions')
     locs = get_locs(ws)
 
     it=0

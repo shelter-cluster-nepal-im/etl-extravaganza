@@ -97,7 +97,7 @@ def clean_exclude(act, file_list):
         return new_list
 
 def consolidate(baseline, wbs, key_col):
-    """consolidate baseline data and worksheets and remove old entries"""
+    """consolidate baseline data and worksheets and remove old data"""
 
     print 'in consolidate'
 
@@ -142,56 +142,10 @@ def consolidate(baseline, wbs, key_col):
         baseline[key_col + xstr(r[0].row)] = get_uid(r[0:max_val], baseline)
     print 'in 2'
 
-    #must check if we already have duplicate keys in dictionary or in sheets
-    #if we do: take the entry with greater status, comp date then started date
-
-    #add baseline to dict
-    dup_count = 0
-    for r in baseline.rows[1:]:
-        uid = get_uid(r[0:max_val], baseline)
-        if base_dict.has_key(uid):
-            if not keep_dict(r, base_dict[uid], baseline):
-                base_dict[xstr(r[key_loc].value)] = get_values(r)
-        else:
-                base_dict[xstr(r[key_loc].value)] = get_values(r)
-
-    print 'Found conflicting entries in baseline: ' + str(dup_count)
-    print 'in 3'
-
-    #merge sheets into a dict
-    dup_count = 0
-    ongoing_count = 0
+    #iterate through each wb and add to base_dict while removing old entries
     for wb in merge_sheets:
-        for r in wb.rows[1:]:
-            uid = get_uid(r[0:max_val], wb)
-            if merge_sheets_dict.has_key(uid):
-                if not none_row(uid):
-                    dup_count+=1
-                    print uid
-                if not keep_dict(r, merge_sheets_dict[uid], wb):
-                    merge_sheets_dict[xstr(r[key_loc].value)] = get_values(r)
-            else:
-                merge_sheets_dict[xstr(r[key_loc].value)] = get_values(r)
-
-        print 'Found conflicting entries in' + wb['A2'].value + ' : ' + str(dup_count)
-        ongoing_count+=dup_count
-        dup_count = 0
-
-    print 'Found conflicting entires in all sheets: ' + str(ongoing_count)
-    print 'in 4'
 
 
-    dup_count = 0
-    print "**Duplicates**"
-    #go through baseline and remove dups
-    for k in base_dict.keys():
-        if k in merge_sheets_dict.keys():
-            print k
-            base_dict.pop(k)
-            dup_count+=1
-
-    print 'in 5'
-    print 'dupcount: ' + str(dup_count)
 
     #now, add baseline and then wbs to cons
     for v in base_dict.values():
