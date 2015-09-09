@@ -144,7 +144,7 @@ def consolidate(baseline, wbs, key_col):
 
     #iterate through each wb and add to base_dict while removing old entries
     for wb in merge_sheets:
-
+        False
 
 
     #now, add baseline and then wbs to cons

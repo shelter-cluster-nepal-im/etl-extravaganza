@@ -83,11 +83,11 @@ class Distributions(Base):
     act_type = Column(String)
     act_desc = Column(String)
     targeting = Column(String)
-    quantity = Column(Integer)
-    total_hh = Column(Integer)
+    quantity = Column(Float)
+    total_hh = Column(Float)
     avg_hh_cost = Column(Float)
-    fem_hh = Column(Integer)
-    vuln_hh = Column(Integer)
+    fem_hh = Column(Float)
+    vuln_hh = Column(Float)
     act_status = Column(String)
     start_dt = Column(String)
     comp_dt = Column(String)
@@ -97,7 +97,7 @@ class Distributions(Base):
 @click.command()
 @click.option('--path', help = 'path to spreadsheet')
 @click.option('--location', help = 'locaiton of spreadsheet')
-def insert_data(path):
+def insert_data(path, location):
     """iterate over each row and add to db"""
     ws = etl.pull_wb(path, location).get_sheet_by_name('Distributions')
     locs = get_locs(ws)
