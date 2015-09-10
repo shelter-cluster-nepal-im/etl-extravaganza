@@ -51,7 +51,7 @@ class TestEtl(unittest.TestCase):
         #scenarios are: new agency, agency that is > 80pct inserted, agency <80 pct
         #create historical db
         db = Workbook().active
-        db.append(("Implementing agency", "dummy"))
+        db.append(("Implementing agency", "dummy", "Additional Comments"))
 
         #other agency
         for i in xrange(10):
@@ -69,7 +69,7 @@ class TestEtl(unittest.TestCase):
         wb1 = Workbook()
         wb1.create_sheet(2, 'Distributions')
         ws1 = wb1.get_sheet_by_name('Distributions')
-        ws1 .append(("Implementing agency", "dummy"))
+        ws1 .append(("Implementing agency", "dummy", "Additional Comments"))
         for i in xrange(5):
             ws1.append(("madnewagency", "dummy"))
 
@@ -77,7 +77,7 @@ class TestEtl(unittest.TestCase):
         wb2 = Workbook()
         wb2.create_sheet(2, 'Distributions')
         ws2 = wb2.get_sheet_by_name('Distributions')
-        ws2 .append(("Implementing agency", "dummy"))
+        ws2 .append(("Implementing agency", "dummy", "Additional Comments"))
         for i in xrange(50):
             ws2.append(("agency_existing_over_80", "dummy"))
 
@@ -85,7 +85,7 @@ class TestEtl(unittest.TestCase):
         wb3 = Workbook()
         wb3.create_sheet(2, 'Distributions')
         ws3 = wb3.get_sheet_by_name('Distributions')
-        ws3 .append(("Implementing agency", "dummy"))
+        ws3 .append(("Implementing agency", "dummy", "Additional Comments"))
         for i in xrange(4):
             ws3.append(("agency_existing_under_80", "dummy"))
 
@@ -93,7 +93,7 @@ class TestEtl(unittest.TestCase):
         wb4 = Workbook()
         wb4.create_sheet(2, 'Distributions')
         ws4 = wb4.get_sheet_by_name('Distributions')
-        ws4 .append(("Implementing agency", "dummy"))
+        ws4 .append(("Implementing agency", "dummy", "Additional Comments"))
         for i in xrange(25):
             ws4.append(("datnewnew", "dummy"))
 
@@ -105,7 +105,7 @@ class TestEtl(unittest.TestCase):
         #new agency: 25 (datnewnew)
         #other new agency: 5 (madnewagency)
 
-        cons = etl.consolidate(db, (wb1, wb2, wb3, wb4))
+        cons = etl.consolidate(db, ((wb1,'f'), (wb2,'f'), (wb3,'f'), (wb4,'f')))
         cons_sheet = cons.get_sheet_by_name('Consolidated')
         r = etl.get_values(cons_sheet.columns[0])
         c = Counter(r)
@@ -139,8 +139,9 @@ class TestEtl(unittest.TestCase):
 
     def test_get_values(self):
         db = Workbook().active
+        db.append(('val', 'blank', 'key'))
         db.append(('val', 'key'))
-        self.assertEqual(etl.get_values(db.rows[0]),['val','key'])
+        self.assertEqual(etl.get_values(db.rows[1]),['val','key'])
 
     def test_keep_dict(self):
         """row is new value, dict is old"""
@@ -151,10 +152,14 @@ class TestEtl(unittest.TestCase):
         self.assertTrue(etl.keep_dict(db.rows[1], d_v, db))
 
     def test_none_row_true(self):
-        self.assertTrue(etl.none_row('NoneNoneNoneNoneNoneNone'))
+        test = Workbook().active
+        test.append(('None','None','None','None','None','None'))
+        self.assertTrue(etl.none_row(test.rows[0]))
 
     def test_none_row_false(self):
-        self.assertFalse(etl.none_row('thisisnotrepeating'))
+        test = Workbook().active
+        test.append(('Not','repeating','!!',';)',':D'))
+        self.assertFalse(etl.none_row(test.rows[0]))
 
 if __name__ == '__main__':
     unittest.main()

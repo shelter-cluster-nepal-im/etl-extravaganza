@@ -47,12 +47,10 @@ def iterate_reports(act, src, path, db, test):
     """cycle through all reports contained in dbox directory"""
 
     file_list = get_file_list(path, src)
-
     file_list = clean_exclude(act, file_list)
 
     if test == True:
         file_list = [file_list[0]]
-
 
     for v in file_list:
         print v
@@ -84,65 +82,103 @@ def iterate_reports(act, src, path, db, test):
 
     elif act == 'cons':
         #consolidate
-        to_send = consolidate(pull_wb(db, src).get_sheet_by_name('Database'), wbs, 'V')
-        send_wb(path + 'consolidated.xlsx', to_send, src)
+        to_send = consolidate(pull_wb(db, src).get_sheet_by_name('Distributions'), wbs)
+        send_wb(path + '/consolidated.xlsx', to_send, src)
 
 def clean_exclude(act, file_list):
-    if act =='clean':
-        new_list = []
-        for v in file_list:
-            if 'C-' in v or 'C -' in v:
-                new_list.append(v)
-            else:
-                print 'Excluding: ' + v
-        return new_list
+    new_list = []
+    for v in file_list:
+        if 'C-' in v or 'C -' in v:
+            new_list.append(v)
+        else:
+            print 'Excluding: ' + v
+    return new_list
 
-def consolidate(baseline, wsl):
+
+def find_none_ws_count(ws):
+    cnt = 0
+    for r in ws.rows:
+        if not none_row(r):
+            cnt+=1
+        else:
+            break
+
+    return cnt
+
+#dates
+
+def consolidate(baseline_ret, wsl):
     """consolidate baseline data and worksheets and remove old data"""
-
-    ialoc = find_in_header(baseline,'Implementing Agency')
-    base_count = Counter(get_values(baseline.columns[column_index_from_string(ialoc)-1]))
 
     cons_wb = Workbook()
     cons = cons_wb.active
     cons.title = 'Consolidated'
-    cons.append(get_values(baseline.rows[0]))
 
     to_add = []
     ag_skip = []
 
+    #trim baseline to be between Implementing agency and additional comments
+    iav = column_index_from_string(find_in_header(baseline_ret,'Implementing Agency'))-1
+    acv = column_index_from_string(find_in_header(baseline_ret,'Additional comments'))
+    baseline = Workbook().active
+    for r in baseline_ret.rows:
+        baseline.append(get_values(r[iav:acv]))
+
+
+    db_ialoc = find_in_header(baseline,'Implementing Agency')
+    base_count = Counter(get_values(baseline.columns[column_index_from_string(db_ialoc)-1]))
+    cons.append(get_values(baseline_ret.rows[0][iav:acv]))
+
+
     #iterate through each sheet and find entries to be added
     for ws in wsl:
-        cd = ws.get_sheet_by_name('Distributions')
-        ag_name = cd[str(ialoc + '2')].value
+        cd = Workbook().active
+
+        #trim down to just essential columns
+        iav = column_index_from_string(find_in_header(ws[0].get_sheet_by_name('Distributions'),'Implementing Agency'))-1
+        acv = column_index_from_string(find_in_header(ws[0].get_sheet_by_name('Distributions'),'Additional comments'))
+        for r in ws[0].get_sheet_by_name('Distributions').rows:
+            cd.append(get_values(r[iav:acv]))
+
+        wsialoc = find_in_header(cd,'Implementing Agency')
+        ag_name = cd[str(wsialoc + '2')].value
         #check if headers match
-        if get_values(cd.rows[0]) != get_values(baseline.rows[0]):
-            print '***ERROR: Non-matching header for: ' + xstr(cd[str(ialoc + '2')].value)
+        if len(cd.rows[0]) != len(baseline.rows[0]):
+            print '***ERROR: Non-matching header for: ' + xstr(cd[str(wsialoc + '2')].value)
         else:
             #check to see if agency is in list and if it is < 80 pct
             if base_count.has_key(ag_name):
-                if len(cd.rows) < base_count[ag_name]*.8:
+                if find_none_ws_count(cd) < base_count[ag_name]*.8:
                     print '***WARNING: ' + ag_name + ' is less than 80 pct'
                 else:
-                    print 'inserting ' + str(len(cd.rows)-1) + ' new values for and removing old for: ' + ag_name
+                    print 'inserting ' + str(find_none_ws_count(cd)-1) + ' new values for and removing old for: ' + ag_name
                     ag_skip.append(xstr(ag_name))
                     for r in cd.rows[1:]:
-                        to_add.append(get_values(r))
+                        if none_row(r):
+                            break
+                        else:
+                            to_add.append(get_values(r))
             else:
-                print 'inserting ' + str(len(cd.rows)-1) + ' new values for new agency: ' + ag_name
+                print 'inserting ' + str(find_none_ws_count(cd)-1) + ' new values for new agency: ' + ag_name
                 for r in cd.rows[1:]:
-                    to_add.append(get_values(r))
+                    if none_row(r):
+                        break
+                    else:
+                        to_add.append(get_values(r))
 
     #create master file
     #this could be better with grouping
     cs = ''
     for v in baseline.rows[1:]:
-        if xstr(v[column_index_from_string(ialoc)-1].value) not in ag_skip:
-            cons.append(v)
+        if xstr(v[column_index_from_string(db_ialoc)-1].value) not in ag_skip:
+            if none_row(v):
+                break
+            else:
+                cons.append(v)
         else:
-            if cs != v[column_index_from_string(ialoc)-1].value:
-                print 'skipping ' + str(base_count[v[column_index_from_string(ialoc)-1].value]) + ' rows for ' + xstr(v[column_index_from_string(ialoc)-1].value)
-                cs = xstr(v[column_index_from_string(ialoc)-1].value)
+            if cs != v[column_index_from_string(db_ialoc)-1].value:
+                print 'skipping ' + str(base_count[v[column_index_from_string(db_ialoc)-1].value]) + ' rows for ' + xstr(v[column_index_from_string(db_ialoc)-1].value)
+                cs = xstr(v[column_index_from_string(db_ialoc)-1].value)
 
     #add in new agency info
     for v in to_add:
@@ -153,8 +189,13 @@ def consolidate(baseline, wsl):
 
 
 def none_row(val):
-    i = (val+val).find(val, 1, -1)
-    return None if i == -1 else val[:i]
+    merge =''
+    for v in get_values(val):
+        merge+=v
+    if len(merge) == 0:
+        return True
+#    i = (merge+merge).find(merge, 1, -1)
+#    return None if i == -1 else merge[:i]
 
 def keep_dict(row, existing, ws):
     """given conflicting dict entries, return True if current val we should keep
@@ -240,8 +281,18 @@ def get_uid(row, sheet):
     return key
 
 def get_values(r):
-    """returns values of a row or a column"""
-    return [xstr(v.value) for v in r]
+    """returns values of a row or a column - note dates are specifically formatted"""
+    #TODO: parameterize date format?
+    ret = []
+    for v in r:
+        if xstr(v.value) == 'None':
+            ret.append('')
+        elif isinstance(v.value, datetime.datetime):
+            ret.append(v.value.strftime('%m/%d/%y'))
+        else:
+            ret.append(xstr(v.value))
+
+    return ret
 
 def send_wb(path, wb, src):
     print 'Sending: ' + path
