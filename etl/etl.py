@@ -116,6 +116,7 @@ def consolidate(baseline_ret, wsl):
 
     to_add = []
     ag_skip = []
+    cnts = {}
 
     #trim baseline to be between Implementing agency and additional comments
     iav = column_index_from_string(find_in_header(baseline_ret,'Implementing Agency'))-1
@@ -151,7 +152,8 @@ def consolidate(baseline_ret, wsl):
                 if find_none_ws_count(cd) < base_count[ag_name]*.8:
                     print '***WARNING: ' + ag_name + ' is less than 80 pct'
                 else:
-                    print 'inserting ' + str(find_none_ws_count(cd)-1) + ' new values for and removing old for: ' + ag_name
+                    cnts[ag_name] = (str(find_none_ws_count(cd)-1),)
+                    print 'inserting ' +  + ' new values for and removing old for: ' + ag_name
                     ag_skip.append(xstr(ag_name))
                     for r in cd.rows[1:]:
                         if none_row(r):
