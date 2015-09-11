@@ -12,10 +12,9 @@
 ##do quick reading method at first for faster run time
 ##fuzzy match col
 ##single method to import all file(s) from a path
+
 from collections import Counter
-
 import datetime
-
 import dropbox
 import clean
 import os
@@ -31,6 +30,8 @@ from os import listdir
 from os.path import isfile, join
 from dateutil.parser import parse
 from openpyxl.utils import get_column_letter
+from itertools import groupby
+
 
 #dropbox setup
 db_access = os.environ['db_access']
@@ -40,7 +41,7 @@ client = dropbox.client.DropboxClient(db_access)
 @click.option('--act', help='what action will we perform', type = click.Choice(['cons','clean']))
 @click.option('--src', help='local files or on dropbox?', type = click.Choice(['db','local']))
 @click.option('--path', help='file path (pull all xls or xlsx files in it')
-@click.option('--db', help='db file if consolidating')
+@click.option('--db', help='db file if consolidating or splitting')
 @click.option('--test', help='are we testing?', is_flag = True)
 
 def iterate_reports(act, src, path, db, test):
@@ -73,7 +74,7 @@ def iterate_reports(act, src, path, db, test):
             send_path = path + '/old_format_or_incorrect/' + f.rsplit('/', 1)[1]
             send_wb(send_path, wb_current, src)
 
-    #clean or consolidate
+    #clean, consolidate or split
     if act == 'clean':
         #clean workboooks
         for wb in wbs:
@@ -82,8 +83,16 @@ def iterate_reports(act, src, path, db, test):
 
     elif act == 'cons':
         #consolidate
-        to_send = consolidate(pull_wb(db, src).get_sheet_by_name('Database'), wbs)
+        try:
+            to_send = consolidate(pull_wb(db, src).get_sheet_by_name('Database'), wbs)
+        except Exception, e:
+            to_send = consolidate(pull_wb(db, src).get_sheet_by_name('Distributions'), wbs)
+
         send_wb(path + '/consolidated.xlsx', to_send, src)
+
+    elif act == 'split':
+        #consolidate
+        split(db)
 
 def clean_exclude(act, file_list):
     new_list = []
@@ -105,7 +114,37 @@ def find_none_ws_count(ws):
 
     return cnt
 
-#dates
+def get_all_values_from_ws(ws):
+    """return an array of arrays f.e row in a ws"""
+    ret = []
+    for r in ws.rows:
+        ret.append(get_values(r))
+
+    return ret
+
+
+def split_get_sheets(db):
+    """return a tuple with agname and array of arrays of sheet contents"""
+    ddict = get_all_values_from_ws(db)
+    ag_loc = column_index_from_string(find_in_header(db, "Implementing Agency"))-1
+    ddict = sorted(ddict[1:], key=lambda k: k[ag_loc])
+
+    #group by and get individual sheets
+    to_ret = []
+    for key, group in groupby(ddict, lambda k: k[ag_loc]):
+        cur_ag = []
+        for r in group:
+            cur_ag.append(r)
+
+        to_ret.append((key,cur_ag))
+
+    print 'tr: ' + str(to_ret)
+    return to_ret
+
+def split(db):
+    """split a db file into agency specific xlsx"""
+    ws_list = split_get_sheets(db)
+
 
 def consolidate(baseline_ret, wsl):
     """consolidate baseline data and worksheets and remove old data"""
@@ -515,7 +554,14 @@ def find_last_value(sheet, start_location, r_or_c):
      #this has been deprecated in favor of openpyxl features - all methods should change their calls
 
     if r_or_c == 'c':
-        return start_location + str(sheet.max_row)
+        loc = 0
+        for v in get_values(sheet.columns[column_index_from_string(start_location)-1]):
+            if v == '':
+                break
+            else:
+                loc+=1
+        return start_location + str(loc)
+
     elif r_or_c == 'r':
         return get_column_letter(sheet.max_column) + '1'
     else:

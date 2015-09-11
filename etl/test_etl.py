@@ -20,10 +20,10 @@ class TestEtl(unittest.TestCase):
         self.assertEqual(etl.wb_format(sample_wb_new_format), True)
 
     def test_find_last_value_row(self):
-        self.assertEqual(etl.find_last_value(ref, 'A', 'r'), 'Z1')
+        self.assertEqual(etl.find_last_value(ref, 'A', 'r'), 'Y1')
 
     def test_find_last_value_column(self):
-        self.assertEqual(etl.find_last_value(ref, 'Z', 'c'), 'Z11')
+        self.assertEqual(etl.find_last_value(ref, 'Y', 'c'), 'Y7')
 
     def test_find_in_header(self):
         self.assertEqual(etl.find_in_header(ref, 'TESTINGCOL'), 'J')       
@@ -160,6 +160,28 @@ class TestEtl(unittest.TestCase):
         test = Workbook().active
         test.append(('Not','repeating','!!',';)',':D'))
         self.assertFalse(etl.none_row(test.rows[0]))
+
+    def test_split_get_sheets(self):
+        test = Workbook().active
+        test.append(("Implementing agency", "dummy", "Additional Comments"))
+        for i in xrange(40):
+            test.append(("ag1", "dummy", "dummy"))
+        for i in xrange(20):
+            test.append(("ag2", "dummy", "dummy"))
+        for i in xrange(10):
+            test.append(("ag1", "dummy", "dummy"))
+        for i in xrange(80):
+            test.append(("ag3", "dummy", "dummy"))
+
+        rs = etl.split_get_sheets(test)
+        print rs
+        self.assertEqual(rs[0][0], 'ag1')
+        self.assertEqual(len(rs[0][1]), 50)
+        self.assertEqual(rs[1][0], 'ag2')
+        self.assertEqual(len(rs[1][1]), 20)
+        self.assertEqual(rs[2][0], 'ag3')
+        self.assertEqual(len(rs[2][1]), 80)
+
 
 if __name__ == '__main__':
     unittest.main()
