@@ -82,7 +82,7 @@ def iterate_reports(act, src, path, db, test):
 
     elif act == 'cons':
         #consolidate
-        to_send = consolidate(pull_wb(db, src).get_sheet_by_name('Distributions'), wbs)
+        to_send = consolidate(pull_wb(db, src).get_sheet_by_name('Database'), wbs)
         send_wb(path + '/consolidated.xlsx', to_send, src)
 
 def clean_exclude(act, file_list):
