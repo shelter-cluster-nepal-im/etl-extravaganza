@@ -31,6 +31,7 @@ from os.path import isfile, join
 from dateutil.parser import parse
 from openpyxl.utils import get_column_letter
 from itertools import groupby
+from copy import copy
 
 
 #dropbox setup
@@ -38,7 +39,7 @@ db_access = os.environ['db_access']
 client = dropbox.client.DropboxClient(db_access)
 
 @click.command()
-@click.option('--act', help='what action will we perform', type = click.Choice(['cons','clean']))
+@click.option('--act', help='what action will we perform', type = click.Choice(['cons','clean','split']))
 @click.option('--src', help='local files or on dropbox?', type = click.Choice(['db','local']))
 @click.option('--path', help='file path (pull all xls or xlsx files in it')
 @click.option('--db', help='db file if consolidating or splitting')
@@ -47,32 +48,33 @@ client = dropbox.client.DropboxClient(db_access)
 def iterate_reports(act, src, path, db, test):
     """cycle through all reports contained in dbox directory"""
 
-    file_list = get_file_list(path, src)
-    file_list = clean_exclude(act, file_list)
+    if act in ('clean', 'cons'):
+        file_list = get_file_list(path, src)
+        file_list = clean_exclude(act, file_list)
 
-    if test == True:
-        file_list = [file_list[0]]
+        if test == True:
+            file_list = [file_list[0]]
 
-    for v in file_list:
-        print v
+        for v in file_list:
+            print v
 
-    #pull down all workbooks
-    wbs = []
-    for f in file_list:
-        #pull down workbook from specified directory
-        print "Pulling: " + f
-        wb_current = pull_wb(f, src)
+        #pull down all workbooks
+        wbs = []
+        for f in file_list:
+            #pull down workbook from specified directory
+            print "Pulling: " + f
+            wb_current = pull_wb(f, src)
 
-        #check to see if properly formatted
-        if wb_format(wb_current):
-            print 'Appending: ' + f
-            wbs.append((wb_current,f))
+            #check to see if properly formatted
+            if wb_format(wb_current):
+                print 'Appending: ' + f
+                wbs.append((wb_current,f))
 
-        else:
-            #put in malformatted folder
-            print 'Malformatted ' + f
-            send_path = path + '/old_format_or_incorrect/' + f.rsplit('/', 1)[1]
-            send_wb(send_path, wb_current, src)
+            else:
+                #put in malformatted folder
+                print 'Malformatted ' + f
+                send_path = path + '/old_format_or_incorrect/' + f.rsplit('/', 1)[1]
+                send_wb(send_path, wb_current, src)
 
     #clean, consolidate or split
     if act == 'clean':
@@ -91,8 +93,13 @@ def iterate_reports(act, src, path, db, test):
         send_wb(path + '/consolidated.xlsx', to_send, src)
 
     elif act == 'split':
-        #consolidate
-        split(db)
+        #consolidate - path is base dir where folder for splits will be made
+        try:
+            dbsht = pull_wb(db, src).get_sheet_by_name('Database')
+        except Exception, e:
+            dbsht = pull_wb(db, src).get_sheet_by_name('Distributions')
+
+        split(dbsht, path, src)
 
 def clean_exclude(act, file_list):
     new_list = []
@@ -138,13 +145,35 @@ def split_get_sheets(db):
 
         to_ret.append((key,cur_ag))
 
-    print 'tr: ' + str(to_ret)
     return to_ret
 
-def split(db):
+def split(db, path, src):
     """split a db file into agency specific xlsx"""
     ws_list = split_get_sheets(db)
+    if src == 'db':
+        template = pull_wb('/2015 Nepal EQ/04 IM/Reporting/Database_&_Template/Template/reportingtemplate_sheltercluster.xlsx', 'db').get_sheet_by_name('Distributions')
+    elif src == 'local':
+        template = pull_wb('/Users/ewanog/Dropbox (GSC)/2015 Nepal EQ/04 IM/Reporting/Database_&_Template/Template/reportingtemplate_sheltercluster.xlsx','local').get_sheet_by_name('Distributions')
 
+    #trim down to just essential columns
+    iav = column_index_from_string(find_in_header(db,'Implementing Agency'))-1
+    acv = column_index_from_string(find_in_header(db,'Additional comments'))
+
+    for ws in ws_list:
+        if len(ws[0][iav:acv]) != len(template.rows[0]):
+            Exception('Template header doesnt match!')
+
+        send = Workbook()
+        send.create_sheet(1,'ct')
+        ct = send.get_sheet_by_name('ct')
+        ct = copy(template)
+        for r in xrange(len(ws[1][1:])):
+            print ws[1]
+            for c in xrange(len(ws[1][r])):
+                ct.cell(row = r+1, column = c+1).value = ws[1][r][c]
+                print ct.cell(row = r+1, column = c+1).value
+
+        send_wb(path+'split/'+ ws[0] + '.xlsx',send, src)
 
 def consolidate(baseline_ret, wsl):
     """consolidate baseline data and worksheets and remove old data"""

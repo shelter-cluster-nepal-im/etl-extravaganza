@@ -304,6 +304,7 @@ def algo18(db,ref):
 
     for row in db.iter_rows(date_col_loc + "2:" +
                                     etl.find_last_value(db, date_col_loc, 'c')):
+
         cur = etl.xstr(row[0].value)
         try:
             if parse(cur) < parse('4-25-2015'):
@@ -312,6 +313,8 @@ def algo18(db,ref):
             bad_date.append(cur + ' @ cell ' + row[0].coordinate)
 
     return db, ref, 'Malformatted date\n' + ','.join(bad_date)
+
+
 
 def algo19(db,ref):
     #Column T: must be a date>= 25/04/2015 and >=Column S

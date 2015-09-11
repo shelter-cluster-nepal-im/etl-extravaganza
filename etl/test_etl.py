@@ -85,7 +85,7 @@ class TestEtl(unittest.TestCase):
         wb3 = Workbook()
         wb3.create_sheet(2, 'Distributions')
         ws3 = wb3.get_sheet_by_name('Distributions')
-        ws3 .append(("Implementing agency", "dummy", "Additional Comments"))
+        ws3.append(("Implementing agency", "dummy", "Additional Comments"))
         for i in xrange(4):
             ws3.append(("agency_existing_under_80", "dummy"))
 
@@ -174,14 +174,12 @@ class TestEtl(unittest.TestCase):
             test.append(("ag3", "dummy", "dummy"))
 
         rs = etl.split_get_sheets(test)
-        print rs
         self.assertEqual(rs[0][0], 'ag1')
         self.assertEqual(len(rs[0][1]), 50)
         self.assertEqual(rs[1][0], 'ag2')
         self.assertEqual(len(rs[1][1]), 20)
         self.assertEqual(rs[2][0], 'ag3')
         self.assertEqual(len(rs[2][1]), 80)
-
 
 if __name__ == '__main__':
     unittest.main()
