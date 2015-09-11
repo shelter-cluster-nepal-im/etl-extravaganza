@@ -152,8 +152,7 @@ def consolidate(baseline_ret, wsl):
                 if find_none_ws_count(cd) < base_count[ag_name]*.8:
                     print '***WARNING: ' + ag_name + ' is less than 80 pct'
                 else:
-                    cnts[ag_name] = (str(find_none_ws_count(cd)-1),)
-                    print 'inserting ' +  + ' new values for and removing old for: ' + ag_name
+                    cnts[ag_name] = [str(find_none_ws_count(cd)-1),0]
                     ag_skip.append(xstr(ag_name))
                     for r in cd.rows[1:]:
                         if none_row(r):
@@ -161,7 +160,7 @@ def consolidate(baseline_ret, wsl):
                         else:
                             to_add.append(get_values(r))
             else:
-                print 'inserting ' + str(find_none_ws_count(cd)-1) + ' new values for new agency: ' + ag_name
+                cnts[ag_name] = [str(find_none_ws_count(cd)-1),0]
                 for r in cd.rows[1:]:
                     if none_row(r):
                         break
@@ -179,12 +178,16 @@ def consolidate(baseline_ret, wsl):
                 cons.append(v)
         else:
             if cs != v[column_index_from_string(db_ialoc)-1].value:
-                print 'skipping ' + str(base_count[v[column_index_from_string(db_ialoc)-1].value]) + ' rows for ' + xstr(v[column_index_from_string(db_ialoc)-1].value)
+                cnts[xstr(v[column_index_from_string(db_ialoc)-1].value)][1] = xstr(base_count[v[column_index_from_string(db_ialoc)-1].value])
                 cs = xstr(v[column_index_from_string(db_ialoc)-1].value)
 
     #add in new agency info
     for v in to_add:
         cons.append(v)
+
+    #print info
+    for k,v in cnts.iteritems():
+        print k + ' inserted: ' + v[0] + ' deleted: ' + v[1]
 
     return cons_wb
 
