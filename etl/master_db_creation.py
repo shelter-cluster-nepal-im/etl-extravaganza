@@ -18,7 +18,7 @@ from openpyxl.cell import column_index_from_string
 
 
 #SQLA
-engine = create_engine('postgresql://shelter:clusterdata@sheltercluster.ci0kkoh87sga.us-east-1.rds.amazonaws.com:5432/shelter')
+engine = create_engine(os.environ['dbk'])
 Base = declarative_base(engine)
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
