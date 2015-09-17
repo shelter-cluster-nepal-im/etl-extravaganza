@@ -104,7 +104,7 @@ def iterate_reports(act, src, path, db, test):
 def clean_exclude(act, file_list):
     new_list = []
     for v in file_list:
-        if 'AC-' in v or 'AC -' in v:
+        if 'C-' in v or 'C -' in v:
             new_list.append(v)
         else:
             print 'Excluding: ' + v
@@ -211,32 +211,33 @@ def consolidate(baseline_ret, wsl):
 
         wsialoc = find_in_header(cd,'Implementing Agency')
         ag_name = cd[str(wsialoc + '2')].value
+
         #check if headers match
-        if len(cd.rows[0])+1 != len(baseline.rows[0]):
-	    print str(len(cd.rows[0]))
-	    print str(len(baseline.rows[0]))
-	    print len(cd.rows[0])+1 == len(baseline.rows[0])
-	    print '***ERROR: Non-matching header for: ' + xstr(cd[str(wsialoc + '2')].value)
- 
-        #check to see if agency is in list and if it is < 80 pct
-        if base_count.has_key(ag_name):
-            if find_none_ws_count(cd) < base_count[ag_name]*.8:
-                print '***WARNING: ' + ag_name + ' is less than 80 pct'
+        wslen = len(cd.rows[0])+1
+        hdlen = len(cons.rows[0])
+        if wslen != hdlen:
+            print '***ERROR: Non-matching header for: ' + xstr(cd[str(wsialoc + '2')].value)
+
+        else:
+            #check to see if agency is in list and if it is < 80 pct
+            if base_count.has_key(ag_name):
+                if find_none_ws_count(cd) < base_count[ag_name]*.8:
+                    print '***WARNING: ' + ag_name + ' is less than 80 pct'
+                else:
+                    cnts[ag_name] = [str(find_none_ws_count(cd)-1),0]
+                    ag_skip.append(xstr(ag_name))
+                    for r in cd.rows[1:]:
+                        if none_row(r):
+                            break
+                        else:
+                            to_add.append(get_values(r))
             else:
                 cnts[ag_name] = [str(find_none_ws_count(cd)-1),0]
-                ag_skip.append(xstr(ag_name))
                 for r in cd.rows[1:]:
                     if none_row(r):
                         break
                     else:
                         to_add.append(get_values(r))
-        else:
-            cnts[ag_name] = [str(find_none_ws_count(cd)-1),0]
-            for r in cd.rows[1:]:
-                if none_row(r):
-                    break
-                else:
-                    to_add.append(get_values(r))
 
     #create master file
     #this could be better with grouping
