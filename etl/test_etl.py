@@ -65,6 +65,10 @@ class TestEtl(unittest.TestCase):
         for i in xrange(40):
             db.append(('agency_existing_under_80','dummy'))
 
+        for i in xrange(40):
+            db.append(('Government','dummy'))
+
+
         #create agency not in db
         wb1 = Workbook()
         wb1.create_sheet(2, 'Distributions')
@@ -97,6 +101,14 @@ class TestEtl(unittest.TestCase):
         for i in xrange(25):
             ws4.append(("datnewnew", "dummy"))
 
+        #gov
+        wb5 = Workbook()
+        wb5.create_sheet(2, 'Distributions')
+        ws5 = wb5.get_sheet_by_name('Distributions')
+        ws5 .append(("Implementing agency", "dummy", "Additional Comments"))
+        for i in xrange(3):
+            ws5.append(("Government", "dummy"))
+
 
         #final counts should be:
         #other agency: 10 (agency_not_inserting)
@@ -105,7 +117,7 @@ class TestEtl(unittest.TestCase):
         #new agency: 25 (datnewnew)
         #other new agency: 5 (madnewagency)
 
-        cons = etl.consolidate(db, ((wb1,'f'), (wb2,'f'), (wb3,'f'), (wb4,'f')))
+        cons = etl.consolidate(db, ((wb1,'f'), (wb2,'f'), (wb3,'f'), (wb4,'f'), (wb5,'f')))
         cons_sheet = cons.get_sheet_by_name('Consolidated')
         r = etl.get_values(cons_sheet.columns[0])
         c = Counter(r)
@@ -115,7 +127,8 @@ class TestEtl(unittest.TestCase):
         self.assertEqual(c['agency_existing_over_80'], 50)
         self.assertEqual(c['agency_existing_under_80'], 40)
         self.assertEqual(c['datnewnew'], 25)
-        self.assertEqual(len(r), 130+1) #+1 for header
+        self.assertEqual(c['Government'], 43)
+        self.assertEqual(len(r), 173+1) #+1 for header
 
     def test_mismatch_header_cons(self):
        #create agency not in db

@@ -219,13 +219,15 @@ def consolidate(baseline_ret, wsl):
             print '***ERROR: Non-matching header for: ' + xstr(cd[str(wsialoc + '2')].value)
 
         else:
-            #check to see if agency is in list and if it is < 80 pct
-            if base_count.has_key(ag_name):
+            #check to see if agency is in list and if it is > 80 pct
+            if base_count.has_key(ag_name) and ag_name.lower() != 'government':
                 if find_none_ws_count(cd) < base_count[ag_name]*.8:
                     print '***WARNING: ' + ag_name + ' is less than 80 pct'
                 else:
+                    if ag_name.lower() != 'government':
+                        ag_skip.append(xstr(ag_name))
+
                     cnts[ag_name] = [str(find_none_ws_count(cd)-1),0]
-                    ag_skip.append(xstr(ag_name))
                     for r in cd.rows[1:]:
                         if none_row(r):
                             break
