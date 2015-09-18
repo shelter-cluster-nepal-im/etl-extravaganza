@@ -51,22 +51,22 @@ class TestEtl(unittest.TestCase):
         #scenarios are: new agency, agency that is > 80pct inserted, agency <80 pct
         #create historical db
         db = Workbook().active
-        db.append(("Implementing agency", "dummy", "Additional Comments"))
+        db.append(("Implementing agency", "dummy", "Additional Comments", "Last Update"))
 
         #other agency
         for i in xrange(10):
-            db.append(('agency_not_inserting','dummy'))
+            db.append(('agency_not_inserting','dummy','add','6-16-90'))
 
         #agency over 80
         for i in xrange(5):
-            db.append(('agency_existing_over_80','dummy'))
+            db.append(('agency_existing_over_80','dummy','add','6-16-90'))
 
         #agency under 80
         for i in xrange(40):
-            db.append(('agency_existing_under_80','dummy'))
+            db.append(('agency_existing_under_80','dummy','add','6-16-90'))
 
         for i in xrange(40):
-            db.append(('Government','dummy'))
+            db.append(('Government','dummy','add','6-16-90'))
 
 
         #create agency not in db
@@ -118,10 +118,10 @@ class TestEtl(unittest.TestCase):
         #other new agency: 5 (madnewagency)
 
         cons = etl.consolidate(db, ((wb1,'f'), (wb2,'f'), (wb3,'f'), (wb4,'f'), (wb5,'f')))
-        cons_sheet = cons.get_sheet_by_name('Consolidated')
+        cons_sheet = cons.get_sheet_by_name('Distributions')
         r = etl.get_values(cons_sheet.columns[0])
         c = Counter(r)
-        print c
+        print etl.get_values(cons_sheet.rows[1])
 
         self.assertEqual(c['agency_not_inserting'], 10)
         self.assertEqual(c['agency_existing_over_80'], 50)
@@ -175,7 +175,7 @@ class TestEtl(unittest.TestCase):
         self.assertFalse(etl.none_row(test.rows[0]))
 
     def test_split_get_sheets(self):
-        test = Workbook().active
+        test = Workbook.active
         test.append(("Implementing agency", "dummy", "Additional Comments"))
         for i in xrange(40):
             test.append(("ag1", "dummy", "dummy"))

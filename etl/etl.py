@@ -151,9 +151,9 @@ def split(db, path, src):
     """split a db file into agency specific xlsx"""
     ws_list = split_get_sheets(db)
     if src == 'db':
-        template = pull_wb('/2015 Nepal EQ/04 IM/Reporting/Database_&_Template/Template/reportingtemplate_sheltercluster.xlsx', 'db', False)
+        template = pull_wb('/2015 Nepal EQ/04 IM/Reporting/Database_&_Template/Template/reportingtemplate_sheltercluster.xlsx', 'db', True)
     elif src == 'local':
-        template = pull_wb('/Users/ewanog/Dropbox (GSC)/2015 Nepal EQ/04 IM/Reporting/Database_&_Template/Template/reportingtemplate_sheltercluster.xlsx','local', False)
+        template = pull_wb('/Users/ewanog/Dropbox (GSC)/2015 Nepal EQ/04 IM/Reporting/Database_&_Template/Template/reportingtemplate_sheltercluster.xlsx','local', True)
 
     #trim down to just essential columns
     iav = column_index_from_string(find_in_header(db,'Implementing Agency'))-1
@@ -164,6 +164,8 @@ def split(db, path, src):
         if s != 'Distributions':
             template.remove_sheet(template.get_sheet_by_name(s))
 
+
+    header_vals = get_values(template.rows[0])
     for ws in ws_list:
         send = template
         send_sheet = send.get_sheet_by_name('Distributions')
@@ -173,8 +175,6 @@ def split(db, path, src):
 
         for r in xrange(1,len(ws[1][1:])):
             for c in xrange(len(ws[1][r])):
-                print 'row: ' + str(r+1)
-                print 'cell: ' + str(c+1)
                 send_sheet.cell(row = r+1, column = c+1).value = ws[1][r][c]
 
         send_wb(path+'split/'+ ws[0] + ' - ' + datetime.datetime.now().strftime('%d%m%y') + '.xlsx',send, src)
@@ -184,7 +184,7 @@ def consolidate(baseline_ret, wsl):
 
     cons_wb = Workbook()
     cons = cons_wb.active
-    cons.title = 'Consolidated'
+    cons.title = 'Distributions'
 
     to_add = []
     ag_skip = []
@@ -193,9 +193,10 @@ def consolidate(baseline_ret, wsl):
     #trim baseline to be between Implementing agency and additional comments
     iav = column_index_from_string(find_in_header(baseline_ret,'Implementing Agency'))-1
     acv = column_index_from_string(find_in_header(baseline_ret,'Additional comments'))
+    luv = column_index_from_string(find_in_header(baseline_ret,'Last Update'))
     baseline = Workbook().active
     for r in baseline_ret.rows:
-        baseline.append(get_values(r[iav:acv]))
+        baseline.append(get_values(r[iav:acv]) + get_values([r[luv-1]]))
 
 
     db_ialoc = find_in_header(baseline,'Implementing Agency')
