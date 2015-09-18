@@ -177,7 +177,7 @@ def split(db, path, src):
                 print 'cell: ' + str(c+1)
                 send_sheet.cell(row = r+1, column = c+1).value = ws[1][r][c]
 
-        send_wb(path+'split/'+ ws[0] + '.xlsx',send, src)
+        send_wb(path+'split/'+ ws[0] + ' - ' + datetime.datetime.now().strftime('%d%m%y') + '.xlsx',send, src)
 
 def consolidate(baseline_ret, wsl):
     """consolidate baseline data and worksheets and remove old data"""
