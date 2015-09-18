@@ -63,7 +63,7 @@ def iterate_reports(act, src, path, db, test):
         for f in file_list:
             #pull down workbook from specified directory
             print "Pulling: " + f
-            wb_current = pull_wb(f, src)
+            wb_current = pull_wb(f, src, True)
 
             #check to see if properly formatted
             if wb_format(wb_current):
@@ -86,18 +86,18 @@ def iterate_reports(act, src, path, db, test):
     elif act == 'cons':
         #consolidate
         try:
-            to_send = consolidate(pull_wb(db, src).get_sheet_by_name('Database'), wbs)
+            to_send = consolidate(pull_wb(db, src, True).get_sheet_by_name('Database'), wbs, True)
         except Exception, e:
-            to_send = consolidate(pull_wb(db, src).get_sheet_by_name('Distributions'), wbs)
+            to_send = consolidate(pull_wb(db, src, True).get_sheet_by_name('Distributions'), wbs, True)
 
         send_wb(path + '/consolidated.xlsx', to_send, src)
 
     elif act == 'split':
         #consolidate - path is base dir where folder for splits will be made
         try:
-            dbsht = pull_wb(db, src).get_sheet_by_name('Database')
+            dbsht = pull_wb(db, src, True).get_sheet_by_name('Database')
         except Exception, e:
-            dbsht = pull_wb(db, src).get_sheet_by_name('Distributions')
+            dbsht = pull_wb(db, src, True).get_sheet_by_name('Distributions')
 
         split(dbsht, path, src)
 
@@ -151,27 +151,31 @@ def split(db, path, src):
     """split a db file into agency specific xlsx"""
     ws_list = split_get_sheets(db)
     if src == 'db':
-        template = pull_wb('/2015 Nepal EQ/04 IM/Reporting/Database_&_Template/Template/reportingtemplate_sheltercluster.xlsx', 'db').get_sheet_by_name('Distributions')
+        template = pull_wb('/2015 Nepal EQ/04 IM/Reporting/Database_&_Template/Template/reportingtemplate_sheltercluster.xlsx', 'db', False)
     elif src == 'local':
-        template = pull_wb('/Users/ewanog/Dropbox (GSC)/2015 Nepal EQ/04 IM/Reporting/Database_&_Template/Template/reportingtemplate_sheltercluster.xlsx','local').get_sheet_by_name('Distributions')
+        template = pull_wb('/Users/ewanog/Dropbox (GSC)/2015 Nepal EQ/04 IM/Reporting/Database_&_Template/Template/reportingtemplate_sheltercluster.xlsx','local', False)
 
     #trim down to just essential columns
     iav = column_index_from_string(find_in_header(db,'Implementing Agency'))-1
     acv = column_index_from_string(find_in_header(db,'Additional comments'))
 
+    #remove additional sheets in template
+    for s in template.sheetnames:
+        if s != 'Distributions':
+            template.remove_sheet(template.get_sheet_by_name(s))
+
     for ws in ws_list:
-        if len(ws[0][iav:acv]) != len(template.rows[0]):
+        send = template
+        send_sheet = send.get_sheet_by_name('Distributions')
+
+        if len(ws[0][iav:acv]) != len(send_sheet.rows[0]):
             Exception('Template header doesnt match!')
 
-        send = Workbook()
-        send.create_sheet(1,'ct')
-        ct = send.get_sheet_by_name('ct')
-        ct = copy(template)
-        for r in xrange(len(ws[1][1:])):
-            print ws[1]
+        for r in xrange(1,len(ws[1][1:])):
             for c in xrange(len(ws[1][r])):
-                ct.cell(row = r+1, column = c+1).value = ws[1][r][c]
-                print ct.cell(row = r+1, column = c+1).value
+                print 'row: ' + str(r+1)
+                print 'cell: ' + str(c+1)
+                send_sheet.cell(row = r+1, column = c+1).value = ws[1][r][c]
 
         send_wb(path+'split/'+ ws[0] + '.xlsx',send, src)
 
@@ -296,7 +300,7 @@ def keep_dict(row, existing, ws):
 	if existing[status_loc] == 'None':
 	    existing[status_loc] = 'Planned'
 
-        
+
 	if v in row[status_loc].value:
             r_ind = c
         if v in existing[status_loc]:
@@ -345,8 +349,8 @@ def keep_dict(row, existing, ws):
 
 def get_uid(row, sheet):
     """return a row's UID based on criteria"""
-    vals = ["Implementing agency", "Local partner agency" , "District", 
-            "VDC / Municipalities", "Municipal Ward", "Action type", 
+    vals = ["Implementing agency", "Local partner agency" , "District",
+            "VDC / Municipalities", "Municipal Ward", "Action type",
             "Action description", "# Items / # Man-hours / NPR",
             "Total Number Households"]
     key = ""
@@ -404,7 +408,7 @@ def wb_format(wb):
 
 def clean_file(wb, path, src):
     """cycle through a report and apply cleaning algorithms"""
-    
+
     #get our two sheets
     db = wb.get_sheet_by_name('Distributions')
     ref = wb.get_sheet_by_name('Reference')
@@ -419,7 +423,7 @@ def clean_file(wb, path, src):
     #algos return db, ref, message
 
     #algo1
-    db, ref, message = clean.algo1(db,ref) 
+    db, ref, message = clean.algo1(db,ref)
     report_a_log(message, rname)
 
     #algo2
@@ -519,12 +523,12 @@ def report_a_log(log_value, path):
     if not report_recvd:
         current_path = path
         report_recvd = True
-    
+
 
     #if we are recieving a new path
     elif current_path != path:
         current_path = path
-        
+
         #write out
         with open('/Users/ewanog/code/nepal-earthquake/shelter/etl-extravaganza/etl/logs/'+
             time.strftime("%m-%d-%y_%H:%M_%S") +'.txt', 'w') as f:
@@ -559,17 +563,17 @@ def colvals_notincol(sheet_val,col_val,sheet_ref,col_ref):
 
     #create an array from sheet_ref with values to be searched (as opposed to nested loops)
     #iter_rows syntax: sheet.iter_rows('A1:A2')
-    for row in sheet_ref.iter_rows(col_ref + "2:" + 
+    for row in sheet_ref.iter_rows(col_ref + "2:" +
         find_last_value(sheet_ref, col_ref, 'c')):
 
-        for cell in row:               
+        for cell in row:
                 try:
                     to_search.append(xstr(cell.value))
                 except:
                     to_search.append(str(cell.value))
 
     #now search through vals and see if they're present
-    for row in sheet_val.iter_rows(col_val + "2:" + 
+    for row in sheet_val.iter_rows(col_val + "2:" +
         find_last_value(sheet_val, col_val, 'c')):
 
         for cell in row:
@@ -580,7 +584,7 @@ def colvals_notincol(sheet_val,col_val,sheet_ref,col_ref):
                     not_in.append(str(cell.value))
 
     return not_in
-             
+
 
 
 def find_last_value(sheet, start_location, r_or_c):
@@ -603,15 +607,21 @@ def find_last_value(sheet, start_location, r_or_c):
         raise Exception("r_or_c must be r or c!")
 
 
-def pull_wb(location, src):
+def pull_wb(location, src, strip):
     """return an excel file from either local or source"""
+    if strip:
+        w = wb_strip(location, src)
+    else:
+        if src == 'db':
+            w = load_workbook(pull_from_db(location))
+        else:
+            w = load_workbook(location)
 
-    return wb_strip(location, src)
+    return w
 
 def wb_strip(location, src):
     if src == 'db':
         w = load_workbook(pull_from_db(location), read_only = True, data_only = True)
-
     else:
         w = load_workbook(location, read_only = True, data_only = True)
 
