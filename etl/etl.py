@@ -86,9 +86,9 @@ def iterate_reports(act, src, path, db, test):
     elif act == 'cons':
         #consolidate
         try:
-            to_send = consolidate(pull_wb(db, src, True).get_sheet_by_name('Database'), wbs, True)
+            to_send = consolidate(pull_wb(db, src, True).get_sheet_by_name('Database'), wbs)
         except Exception, e:
-            to_send = consolidate(pull_wb(db, src, True).get_sheet_by_name('Distributions'), wbs, True)
+            to_send = consolidate(pull_wb(db, src, True).get_sheet_by_name('Distributions'), wbs)
 
         send_wb(path + '/consolidated.xlsx', to_send, src)
 
@@ -179,12 +179,64 @@ def split(db, path, src):
 
         send_wb(path+'split/'+ ws[0] + ' - ' + datetime.datetime.now().strftime('%d%m%y') + '.xlsx',send, src)
 
+
+def copy_sheet(to, fro):
+    """read in two sheets and copy values from the second one"""
+    for c in fro.columns:
+        for v in c:
+            to.cell(row = v, column = c).value = fro.cell(row = v, column = c)
+
+    return to
+
 def consolidate(baseline_ret, wsl):
-    """consolidate baseline data and worksheets and remove old data"""
+    """consolidate Distributions and Trainings"""
+    ret = Workbook()
+    ret.remove_sheet(ret.get_sheet_by_name('Sheet'))
+    ret.create_sheet(1,'Distributions')
+    ret.create_sheet(2,'Trainings')
+    dist = ret.get_sheet_by_name('Distributions')
+    train= ret.get_sheet_by_name('Trainings')
+
+    dist = copy_sheet(dist, consolidate_specfic(baseline_ret, wsl, 'Distrbutions'))
+    train = copy_sheet(consolidate_specfic(baseline_ret, wsl, 'Trainings'))
+
+    return ret
+
+def clean_output(cons):
+    """convert appropriate columns to numeric values and format dates properly"""
+    num_cols = ["# Items / # Man-hours / NPR", "Total Number Households", "Average cost per households (NPR)",\
+                    "Female headed households", "Vulnerable Caste / Ethnicity households", 'Duration of each session (hours)',	\
+                'Amount Paid to Participants (NPR per participant)',	'Total Cost Per Training',\
+                'Total Participants (Individuals)',	'Males',	'Females',	'Third Gender',	'Elderly (60+)',	\
+                'Children (under 18)',	'Persons with Disabilities',	'Vulnerable Caste or Ethnicity',	\
+                'Female Headed Households (if applicable)']
+
+    date_cols = ["Start date", "Completion Date", 'Start date (Actual or Planned)',	'Completion Date (Actual or Planned)']
+
+
+    for col in cons.columns:
+        if col[0].value in num_cols:
+            for v in col:
+                try:
+                    v.value = int(v.value)
+                except:
+                    pass
+
+        if col[0].value in date_cols:
+            for v in col:
+                try:
+                    v.value = datetime.datetime.strptime(v.value, '%m/%d/%y').strftime('%d/%m/%y')
+                except Exception, e:
+                    pass
+
+    return cons
+
+def consolidate_specfic(baseline_ret, wsl, which_sheet):
+    """consolidate a given sheet type and remove old data"""
 
     cons_wb = Workbook()
     cons = cons_wb.active
-    cons.title = 'Distributions'
+    cons.title = which_sheet
 
     to_add = []
     ag_skip = []
@@ -209,9 +261,10 @@ def consolidate(baseline_ret, wsl):
         cd = Workbook().active
 
         #trim down to just essential columns
-        iav = column_index_from_string(find_in_header(ws[0].get_sheet_by_name('Distributions'),'Implementing Agency'))-1
-        acv = column_index_from_string(find_in_header(ws[0].get_sheet_by_name('Distributions'),'Additional comments'))
-        for r in ws[0].get_sheet_by_name('Distributions').rows:
+        print ws[0].worksheets
+        iav = column_index_from_string(find_in_header(ws[0].get_sheet_by_name(which_sheet),'Implementing Agency'))-1
+        acv = column_index_from_string(find_in_header(ws[0].get_sheet_by_name(which_sheet),'Additional comments'))
+        for r in ws[0].get_sheet_by_name(which_sheet).rows:
             cd.append(get_values(r[iav:acv]))
 
         wsialoc = find_in_header(cd,'Implementing Agency')
@@ -225,7 +278,7 @@ def consolidate(baseline_ret, wsl):
 
         else:
             #check to see if agency is in list and if it is > 80 pct
-            if base_count.has_key(ag_name) and ag_name.lower() != 'government':
+            if base_count.has_key(ag_name) and ag_name.lower() != 'government' and which_sheet != 'Trainings':
                 if find_none_ws_count(cd) < base_count[ag_name]*.8:
                     print '***WARNING: ' + ag_name + ' is less than 80 pct'
                 else:
@@ -262,14 +315,16 @@ def consolidate(baseline_ret, wsl):
 
     #add in new agency info
     for v in to_add:
-        cons.append(v + [datetime.datetime.now().strftime('%m/%d/%y')])
+        cons.append(v + [datetime.datetime.now().strftime('%d/%m/%y')])
+
+    #convert columns to numbers and format dates
+    cons = clean_output(cons)
 
     #print info
     for k,v in cnts.iteritems():
         print k + ' inserted: ' + str(v[0]) + ' deleted: ' + str(v[1])
 
     return cons_wb
-
 
 
 def none_row(val):

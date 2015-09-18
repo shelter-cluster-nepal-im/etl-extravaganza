@@ -47,7 +47,7 @@ class TestEtl(unittest.TestCase):
 
         assert os.path.exists('/Users/ewanog/code/nepal-earthquake/shelter/etl/etl/logs/cleaned_log.txt')
 
-    def test_consolidate(self):
+    def test_consolidate_specific(self):
         #scenarios are: new agency, agency that is > 80pct inserted, agency <80 pct
         #create historical db
         db = Workbook().active
@@ -117,7 +117,7 @@ class TestEtl(unittest.TestCase):
         #new agency: 25 (datnewnew)
         #other new agency: 5 (madnewagency)
 
-        cons = etl.consolidate(db, ((wb1,'f'), (wb2,'f'), (wb3,'f'), (wb4,'f'), (wb5,'f')))
+        cons = etl.consolidate(db, ((wb1,'f'), (wb2,'f'), (wb3,'f'), (wb4,'f'), (wb5,'f')), 'Distributions')
         cons_sheet = cons.get_sheet_by_name('Distributions')
         r = etl.get_values(cons_sheet.columns[0])
         c = Counter(r)
@@ -175,7 +175,7 @@ class TestEtl(unittest.TestCase):
         self.assertFalse(etl.none_row(test.rows[0]))
 
     def test_split_get_sheets(self):
-        test = Workbook.active
+        test = Workbook().active
         test.append(("Implementing agency", "dummy", "Additional Comments"))
         for i in xrange(40):
             test.append(("ag1", "dummy", "dummy"))
@@ -193,6 +193,19 @@ class TestEtl(unittest.TestCase):
         self.assertEqual(len(rs[1][1]), 20)
         self.assertEqual(rs[2][0], 'ag3')
         self.assertEqual(len(rs[2][1]), 80)
+
+    def test_clean_output(self):
+        test = Workbook().active
+        test.append(("# Items / # Man-hours / NPR", "Completion Date", "not_either"))
+        test.append(('1','6/16/90','etc'))
+        res = etl.clean_output(test)
+        self.assertTrue(isinstance(res.rows[1][0].value,int))
+        self.assertTrue(res.rows[1][1].value == '16/06/90')
+
+    def test_consolidate(self):
+        to = Workbook().active
+        fro = Workbook().active
+        etl.consolidate()
 
 if __name__ == '__main__':
     unittest.main()
