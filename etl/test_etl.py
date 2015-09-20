@@ -72,42 +72,58 @@ class TestEtl(unittest.TestCase):
         #create agency not in db
         wb1 = Workbook()
         wb1.create_sheet(2, 'Distributions')
+        wb1.create_sheet(3, 'Trainings')
         ws1 = wb1.get_sheet_by_name('Distributions')
-        ws1 .append(("Implementing agency", "dummy", "Additional Comments"))
+        ws1.append(("Implementing agency", "dummy", "Additional Comments"))
+        wb1.get_sheet_by_name('Trainings').append(("Implementing agency", "dummy", "Additional Comments"))
+        wb1.get_sheet_by_name('Trainings').append(("agency", "dummy", "etc"))
         for i in xrange(5):
             ws1.append(("madnewagency", "dummy"))
 
         #create agency in db >80
         wb2 = Workbook()
         wb2.create_sheet(2, 'Distributions')
+        wb2.create_sheet(3, 'Trainings')
         ws2 = wb2.get_sheet_by_name('Distributions')
         ws2 .append(("Implementing agency", "dummy", "Additional Comments"))
+        wb2.get_sheet_by_name('Trainings').append(("Implementing agency", "dummy", "Additional Comments"))
+        wb2.get_sheet_by_name('Trainings').append(("agency", "dummy", "etc"))
         for i in xrange(50):
             ws2.append(("agency_existing_over_80", "dummy"))
 
         #create agency in db <80
         wb3 = Workbook()
         wb3.create_sheet(2, 'Distributions')
+        wb3.create_sheet(3, 'Trainings')
         ws3 = wb3.get_sheet_by_name('Distributions')
         ws3.append(("Implementing agency", "dummy", "Additional Comments"))
+        wb3.get_sheet_by_name('Trainings').append(("Implementing agency", "dummy", "Additional Comments"))
+        wb3.get_sheet_by_name('Trainings').append(("agency", "dummy", "etc"))
         for i in xrange(4):
             ws3.append(("agency_existing_under_80", "dummy"))
 
         #create another agency NOT in db
         wb4 = Workbook()
         wb4.create_sheet(2, 'Distributions')
+        wb4.create_sheet(3, 'Trainings')
         ws4 = wb4.get_sheet_by_name('Distributions')
         ws4 .append(("Implementing agency", "dummy", "Additional Comments"))
+        wb4.get_sheet_by_name('Trainings').append(("Implementing agency", "dummy", "Additional Comments"))
+        wb4.get_sheet_by_name('Trainings').append(("agency", "dummy", "etc"))
         for i in xrange(25):
             ws4.append(("datnewnew", "dummy"))
 
         #gov
         wb5 = Workbook()
         wb5.create_sheet(2, 'Distributions')
+        wb5.create_sheet(3, 'Trainings')
         ws5 = wb5.get_sheet_by_name('Distributions')
         ws5 .append(("Implementing agency", "dummy", "Additional Comments"))
+        wb5.get_sheet_by_name('Trainings').append(("Implementing agency", "dummy", "Additional Comments"))
+        wb5.get_sheet_by_name('Trainings').append(("agency", "dummy", "etc"))
         for i in xrange(3):
             ws5.append(("Government", "dummy"))
+
 
 
         #final counts should be:
@@ -117,10 +133,12 @@ class TestEtl(unittest.TestCase):
         #new agency: 25 (datnewnew)
         #other new agency: 5 (madnewagency)
 
-        cons = etl.consolidate(db, ((wb1,'f'), (wb2,'f'), (wb3,'f'), (wb4,'f'), (wb5,'f')), 'Distributions')
+        cons = etl.consolidate(db, ((wb1,'f'), (wb2,'f'), (wb3,'f'), (wb4,'f'), (wb5,'f')))
         cons_sheet = cons.get_sheet_by_name('Distributions')
+        etl.print_sheet(cons_sheet)
         r = etl.get_values(cons_sheet.columns[0])
         c = Counter(r)
+        print c
         print etl.get_values(cons_sheet.rows[1])
 
         self.assertEqual(c['agency_not_inserting'], 10)
@@ -202,10 +220,12 @@ class TestEtl(unittest.TestCase):
         self.assertTrue(isinstance(res.rows[1][0].value,int))
         self.assertTrue(res.rows[1][1].value == '16/06/90')
 
-    def test_consolidate(self):
+    def test_copy_sheet(self):
         to = Workbook().active
+        to.append(("ag1", "dummy", "dummy"))
         fro = Workbook().active
-        etl.consolidate()
+        fro.append(("ag1", "dummy", "dummy"))
+        etl.copy_sheet(to,fro)
 
 if __name__ == '__main__':
     unittest.main()
