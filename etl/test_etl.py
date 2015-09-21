@@ -227,5 +227,12 @@ class TestEtl(unittest.TestCase):
         fro.append(("ag1", "dummy", "dummy"))
         etl.copy_sheet(to,fro)
 
+    def test_get_unsure_ws(self):
+        wb = Workbook()
+        wb.create_sheet(2, 'Distributions')
+        wb.create_sheet(3, 'Trainings')
+        wb.create_sheet(4, 'thisone')
+        self.assertEqual(etl.get_unsure_ws(wb, ['d','bb','thisone']).title,'thisone')
+
 if __name__ == '__main__':
     unittest.main()
