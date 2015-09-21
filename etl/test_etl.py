@@ -234,5 +234,10 @@ class TestEtl(unittest.TestCase):
         wb.create_sheet(4, 'thisone')
         self.assertEqual(etl.get_unsure_ws(wb, ['d','bb','thisone']).title,'thisone')
 
+    def test_consolidate_specfic(self):
+        ws = etl.pull_wb('/Users/ewanog/tmp/cleaned//C - Navajyoti Center.xlsx', 'local', True)
+        r = etl.consolidate_specfic(etl.pull_wb('/Users/ewanog/tmp/simp.xlsx', 'local', True), [(ws,'f')], 'Trainings')
+
+
 if __name__ == '__main__':
     unittest.main()
