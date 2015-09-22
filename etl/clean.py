@@ -1,3 +1,5 @@
+"""collection of cleaning and verification algos"""
+
 #notes: two admin1_dist, using 'E'
 #TODO: create a versatile stystem of creating filters that automitaiclly creates tests
 #Nones?

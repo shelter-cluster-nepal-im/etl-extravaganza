@@ -235,9 +235,23 @@ class TestEtl(unittest.TestCase):
         self.assertEqual(etl.get_unsure_ws(wb, ['d','bb','thisone']).title,'thisone')
 
     def test_consolidate_specfic(self):
+        #INCOMPLETE!!!
         ws = etl.pull_wb('/Users/ewanog/tmp/cleaned//C - Navajyoti Center.xlsx', 'local', True)
         r = etl.consolidate_specfic(etl.pull_wb('/Users/ewanog/tmp/simp.xlsx', 'local', True), [(ws,'f')], 'Trainings')
 
+    def test_add_vals_row(self):
+        ws = Workbook().active
+        ws.append(("head1", "head2", "head3"))
+        ws.append(("vals", "morevals", "allthevals"))
+        r = etl.add_vals(ws, ['new','header'], 'D1','r')
+        rh = etl.get_values(r.rows[0])
+        self.assertEqual(rh, ['head1', 'head2', 'head3', 'new','header'])
+
+    def test_add_vals_col(self):
+        ws = Workbook().active
+        r  = etl.add_vals(ws, ['new','vals'], 'B1','c')
+        rh = etl.get_values(r.columns[1])
+        self.assertEqual(rh, ['new','vals'])
 
 if __name__ == '__main__':
     unittest.main()
