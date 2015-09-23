@@ -110,6 +110,7 @@ class TestMetadata(unittest.TestCase):
 
     def test_uid(self):
         db = Workbook().active
+        db.title = 'Distributions'
         db.append(("Implementing agency", "Local partner agency" , "District",
                 "VDC / Municipalities", "Municipal Ward", "Action type",
                 "Action description", "# Items / # Man-hours / NPR",

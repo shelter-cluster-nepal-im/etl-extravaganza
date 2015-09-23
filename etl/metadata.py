@@ -145,23 +145,38 @@ class Meta:
 
     def uid(self, db):
         "UID"
-        vals = ["Implementing agency", "Local partner agency" , "District",
-                "VDC / Municipalities", "Municipal Ward", "Action type",
-                "Action description", "# Items / # Man-hours / NPR",
+        ok_key = False
+        if db.title == 'Distributions':
+            vals = ["Implementing agency", "Local partner agency" , "District",
+                    "VDC / Municipalities", "Municipal Ward", "Action type",
+                    "Action description", "# Items / # Man-hours / NPR",
                 "Total Number Households"]
+            ok_key = True
+
+        elif db.title == 'Trainings':
+            vals = ["Implementing agency","Local partner agency","District","VDC / Municipalities","Municipal Ward",
+                    "Training Subject","Audience","IEC Materials Distributed","Males"]
+            ok_key = True
+
         to_ret = []
+        if ok_key:
 
-        for r in db.rows[1:]:
-            key = ""
-            for v in vals:
-                try:
-                    key += etl.xstr(r[column_index_from_string(etl.find_in_header(db, v))-1].value)
-                except:
-                    print 'Malformmated UID for: ' + etl.xstr(r[column_index_from_string(etl.find_in_header \
-                                (db, 'Implementing agency'))-1].value)
-            to_ret.append(key)
 
-        return to_ret
+            for r in db.rows[1:]:
+                key = ""
+                for v in vals:
+                    try:
+                        key += etl.xstr(r[column_index_from_string(etl.find_in_header(db, v))-1].value)
+                    except:
+                        print 'Malformmated UID for: ' + etl.xstr(r[column_index_from_string(etl.find_in_header \
+                                    (db, 'Implementing agency'))-1].value) + ' for WS: ' + db.title
+                to_ret.append(key)
+
+            return to_ret
+
+        else:
+            return to_ret
+            print 'ERROR: no suitable WB found for UID'
 
 
     def get(self, col, db):

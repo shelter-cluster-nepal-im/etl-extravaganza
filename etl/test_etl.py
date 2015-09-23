@@ -3,7 +3,8 @@ import etl
 from openpyxl import load_workbook
 from openpyxl import Workbook
 from collections import Counter
-import os 
+import os
+from openpyxl.styles import PatternFill
 
 
 sample_wb_new_format = load_workbook('/Users/ewanog/code/nepal-earthquake/shelter/etl-extravaganza/clean_test.xlsx', data_only = True)
@@ -252,6 +253,20 @@ class TestEtl(unittest.TestCase):
         r  = etl.add_vals(ws, ['new','vals'], 'B1','c')
         rh = etl.get_values(r.columns[1])
         self.assertEqual(rh, ['new','vals'])
+
+    def test_add_meta_colors(self):
+        ws = Workbook().active
+        ws.append(('etc','Additional Comments','not','blank'))
+
+        template = Workbook().active
+        template['A1'].fill = PatternFill(start_color = 'FFFFFFFF')
+        ws = etl.add_meta_colors(ws, template)
+        for v in ws.rows[0]:
+            print v.value
+            print v.style
+            print
+            print
+            print
 
 if __name__ == '__main__':
     unittest.main()
