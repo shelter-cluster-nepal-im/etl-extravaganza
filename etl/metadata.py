@@ -162,23 +162,31 @@ class Meta:
         mal_count = 0
 
         print 'Starting UID'
+
         if ok_key:
-            for r in db.rows[1:]:
-                key = ""
-                for v in vals:
+            #pull vals into array
+            key_vals = []
+            max_len = 0
+            for v in vals:
+                val_arr = etl.get_values(db.columns[column_index_from_string(etl.find_in_header(db, v))-1])
+                key_vals.append(val_arr)
+                if len(val_arr) > max_len:
+                    max_len = len(val_arr)
+
+            for i in xrange(1,max_len):
+                cur_key = ''
+                for k in xrange(len(key_vals)):
                     try:
-                        key += etl.xstr(r[column_index_from_string(etl.find_in_header(db, v))-1].value)
+                        cur_key+= key_vals[k][i]
                     except:
-                        mal_count+=1
+                        pass
+                to_ret.append(cur_key)
 
-                to_ret.append(key)
-
-            print 'Malformmed UIDs: ' + str(mal_count)
             return to_ret
 
         else:
-            return to_ret
             print 'ERROR: no suitable WB found for UID'
+            return to_ret
 
 
     def get(self, col, db):
