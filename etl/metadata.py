@@ -159,19 +159,21 @@ class Meta:
             ok_key = True
 
         to_ret = []
+        mal_count = 0
+
+        print 'Starting UID'
         if ok_key:
-
-
             for r in db.rows[1:]:
                 key = ""
                 for v in vals:
                     try:
                         key += etl.xstr(r[column_index_from_string(etl.find_in_header(db, v))-1].value)
                     except:
-                        print 'Malformmated UID for: ' + etl.xstr(r[column_index_from_string(etl.find_in_header \
-                                    (db, 'Implementing agency'))-1].value) + ' for WS: ' + db.title
+                        mal_count+=1
+
                 to_ret.append(key)
 
+            print 'Malformmed UIDs: ' + str(mal_count)
             return to_ret
 
         else:
