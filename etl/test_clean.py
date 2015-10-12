@@ -5,14 +5,18 @@ import etl
 import clean
 from openpyxl import load_workbook
 
-sample_wb = load_workbook('/Users/ewanog/code/nepal-earthquake/shelter/etl/clean_test.xlsx', data_only = True)
-dist = sample_wb.get_sheet_by_name('Distributions')
+sample_wb = load_workbook('/Users/ewanog/code/git_repos/nepal-earthquake/shelter/etl-extravaganza/clean_test.xlsx', data_only = True)
 train = sample_wb.get_sheet_by_name('Training')
 ref = sample_wb.get_sheet_by_name('Reference')
+date_wb = load_workbook('/Users/ewanog/code/git_repos/nepal-earthquake/shelter/etl-extravaganza/date_test.xlsx', data_only = True)
+dist = date_wb.get_sheet_by_name('dates')
 
 class TestClean(unittest.TestCase):
-    print ''
+    def test_cur(self):
+        clean.algo20(dist, ref)
 
 if __name__ == '__main__':
-    print clean.algo15(dist, ref)
+    unittest.main()
+
+
     

@@ -7,8 +7,8 @@ import os
 from openpyxl.styles import PatternFill
 
 
-sample_wb_new_format = load_workbook('/Users/ewanog/code/nepal-earthquake/shelter/etl-extravaganza/clean_test.xlsx', data_only = True)
-sample_wb = load_workbook('/Users/ewanog/code/nepal-earthquake/shelter/etl-extravaganza/etl_test.xlsx')
+sample_wb_new_format = load_workbook('/Users/ewanog/code/git_repos/nepal-earthquake/shelter/etl-extravaganza/clean_test.xlsx', data_only = True)
+sample_wb = load_workbook('/Users/ewanog/code/git_repos/nepal-earthquake/shelter/etl-extravaganza/etl_test.xlsx')
 db = sample_wb.get_sheet_by_name('Database')
 ref = sample_wb.get_sheet_by_name('Reference')
 
@@ -236,9 +236,10 @@ class TestEtl(unittest.TestCase):
         self.assertEqual(etl.get_unsure_ws(wb, ['d','bb','thisone']).title,'thisone')
 
     def test_consolidate_specfic(self):
+        pass
         #INCOMPLETE!!!
-        ws = etl.pull_wb('/Users/ewanog/tmp/cleaned//C - Navajyoti Center.xlsx', 'local', True)
-        r = etl.consolidate_specfic(etl.pull_wb('/Users/ewanog/tmp/simp.xlsx', 'local', True), [(ws,'f')], 'Trainings')
+#        ws = etl.pull_wb('/Users/ewanog/tmp/cleaned//C - Navajyoti Center.xlsx', 'local', True)
+#        r = etl.consolidate_specfic(etl.pull_wb('/Users/ewanog/tmp/simp.xlsx', 'local', True), [(ws,'f')], 'Trainings')
 
     def test_add_vals_row(self):
         ws = Workbook().active
@@ -253,6 +254,24 @@ class TestEtl(unittest.TestCase):
         r  = etl.add_vals(ws, ['new','vals'], 'B1','c')
         rh = etl.get_values(r.columns[1])
         self.assertEqual(rh, ['new','vals'])
+
+    def test_get_all_values_from_ws_row(self):
+        ws = Workbook().active
+        ws.append(('value1', 'value2', 'value3', '', 'psych!!'))
+        ws.append(('a value', 'm00r values', 'all teh vals', 'r belong!!'))
+        res = etl.get_all_values_from_ws(ws, 'r')
+
+        self.assertEqual(res[0][0], 'value1')
+        self.assertEqual(res[1][2], 'all teh vals')
+
+    def test_get_all_values_from_ws_col(self):
+        ws = Workbook().active
+        ws.append(('value1', 'value2', 'value3', '', 'psych!!'))
+        ws.append(('a value', 'm00r values', 'all teh vals', 'r belong!!'))
+        res = etl.get_all_values_from_ws(ws, 'c')
+
+        self.assertEqual(res[0][0], 'value1')
+        self.assertEqual(res[2][1], 'all teh vals')
 
     def test_add_meta_colors(self):
         ws = Workbook().active

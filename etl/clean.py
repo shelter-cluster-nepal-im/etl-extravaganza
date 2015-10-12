@@ -9,6 +9,8 @@ import etl
 import string
 from datetime import datetime
 from dateutil.parser import *
+from openpyxl.cell import column_index_from_string
+from datetime import datetime
 
 def algo1(db, ref):
     #***Column A must be in Reference>ImplementingAgency if not: make a note
@@ -297,10 +299,7 @@ def algo17(db,ref):
 
 def algo18(db,ref):
     #Column S: must be a date>= 25/04/2015
-    date_col_loc = etl.find_in_header(db, 'Start date \n(Actual or Planned)')
-
-    if date_col_loc is None:
-        date_col_loc = etl.find_in_header(db, 'Start date')
+    date_col_loc = etl.find_in_header(db, 'Start date')
 
     bad_date = []
 
@@ -320,8 +319,8 @@ def algo18(db,ref):
 
 def algo19(db,ref):
     #Column T: must be a date>= 25/04/2015 and >=Column S
-    comp_col_loc = etl.find_in_header(db, 'Completion Date\n (Actual or Planned)')
-    start_col_loc = etl.find_in_header(db, 'Start date \n(Actual or Planned)')
+    comp_col_loc = etl.find_in_header(db, 'Completion Date')
+    start_col_loc = etl.find_in_header(db, 'Start date')
 
     bad_date = []
 
@@ -337,8 +336,25 @@ def algo19(db,ref):
     return db, ref, 'Malformatted date or before start date\n' + ','.join(bad_date)
 
 def algo20(db,ref):
-    #
-    return db, ref, '\n' + ','.join()
+    #Output if completion date > current date and activity status not like completed
+    comp_col_loc = etl.find_in_header(db, 'Completion Date')
+    status_col_loc = etl.find_in_header(db, 'Activity Status')
+    zipped = zip(db.columns[column_index_from_string(status_col_loc)-1], db.columns[column_index_from_string(comp_col_loc)-1])
+    bad_date = []
+
+    for i,v in enumerate(zipped[1:]):
+        cur_date = v[1].value
+        if cur_date is not None:
+            if not isinstance(cur_date, datetime):
+                try:
+                    cur_date = datetime.strptime(cur_date, '%d/%m/%Y')
+                except:
+                    Exception('Bad date formatting for: ' + str(cur_date))
+
+            if cur_date < datetime.now() and 'completed' not in v[0].value.lower():
+                bad_date.append('%s row %i' % (str(datetime.date(cur_date)),i))
+
+    return db, ref, 'Completion date has passed for \n' + ','.join(bad_date)
 
 def algo21(db,ref):
     #
