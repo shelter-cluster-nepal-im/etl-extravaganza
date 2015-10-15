@@ -2,3 +2,5 @@ dropbox
 openpyxl
 click
 sqlalchemy
+python-dateutil
+psycopg2
