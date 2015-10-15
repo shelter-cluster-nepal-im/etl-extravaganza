@@ -303,7 +303,7 @@ def algo17(db,ref):
     ref_col_loc = etl.find_in_header(ref,'Status')
     missing_names = etl.colvals_notincol(db, db_col_loc, ref, ref_col_loc)
 
-    return db, ref, return_message('Activity Status not in Referece' ,missing_names)
+    return db, ref, return_message('Activity Status not in Reference' ,missing_names)
 
 def algo18(db,ref):
     #Column S: must be a date>= 25/04/2015
