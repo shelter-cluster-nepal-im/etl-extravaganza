@@ -219,7 +219,8 @@ class TestEtl(unittest.TestCase):
         test.append(('1','6/16/90','etc'))
         res = etl.clean_output(test)
         self.assertTrue(isinstance(res.rows[1][0].value,int))
-        self.assertTrue(res.rows[1][1].value == '16/06/90')
+        self.assertTrue(res.rows[1][1].value == '16/06/1990')
+
 
     def test_copy_sheet(self):
         to = Workbook().active
