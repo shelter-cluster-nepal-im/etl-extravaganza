@@ -3,6 +3,7 @@ etl/__init__.py
 etl/clean.py
 etl/click_test.py
 etl/convert_ward_data.py
+etl/date_check.py
 etl/etl.py
 etl/master_db_creation.py
 etl/metadata.py
