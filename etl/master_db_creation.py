@@ -124,17 +124,22 @@ def insert_data(path, location, table_name):
 def check_zero_entries(r, locs, meta):
     """iterate through each value and see if any ints are Nones, set to 0"""
     for col in meta.columns:
-        if isinstance(col.type, Integer) or isinstance(col.type, Float):
-	  if col.description != 'pk':
-            if etl.xstr(r[locs[col.description]-1].value) == 'None':
-                r[locs[col.description]-1].value = '0'
+        if (isinstance(col.type, Integer) or isinstance(col.type, Float)) and col.description != 'pk'\
+            and etl.xstr(r[locs[col.description]-1].value) == 'None':
+            r[locs[col.description]-1].value = '0'
 
-    return r
+
+def make_null(r, locs, meta):
+    """iterate through each value and see if any values are Nones, set to None (Null in db)"""
+    for col in meta.columns:
+        if etl.xstr(r[locs[col.description]-1].value) == 'None':
+            r[locs[col.description]-1].value = None
 
 
 def prep_row(r, locs):
     #check to see if numeric rows are None - if so, make 0
     r = check_zero_entries(r, locs, Base.metadata.tables['distributions'])
+    r = make_null(r, locs, Base.metadata.tables['distributions'])
 
     return Distributions(
     priority=etl.xstr(r[locs["priority"]-1].value),
