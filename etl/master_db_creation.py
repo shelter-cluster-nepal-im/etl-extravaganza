@@ -28,9 +28,6 @@ session = DBSession()
 db_access = os.environ['db_access']
 client = dropbox.client.DropboxClient(db_access)
 
-#SQL table name
-TABLE_NAME = None
-
 class Distributions(Base):
     """create table"""
 
@@ -65,7 +62,7 @@ class Distributions(Base):
     Additional Comments	:	comments
     """
 
-    __tablename__ = TABLE_NAME
+    __tablename__ = 'distributions'
 
     priority = Column(String)
     access_method = Column(String)
@@ -103,10 +100,8 @@ class Distributions(Base):
 @click.option('--table_name', help = 'name of table to be created ')
 def insert_data(path, location, table_name):
     """iterate over each row and add to db"""
-    global TABLE_NAME
     ws = etl.pull_wb(path, location, True).get_sheet_by_name('Distributions')
     locs = get_locs(ws)
-    TABLE_NAME = table_name
 
     it=0
     for r in ws.rows[1:]:
