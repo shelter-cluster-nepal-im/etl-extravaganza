@@ -185,7 +185,7 @@ def prep_row(r, locs):
     district=etl.xstr(r[locs["district"]-1], setnull=True),
     vdc=etl.xstr(r[locs["vdc"]-1], setnull=True),
     ward=etl.xstr(r[locs["ward"]-1], setnull=True),
-    train_sub=etl.xstr(r[locs["act_type"]-1], setnull=True),
+    train_sub=etl.xstr(r[locs["train_sub"]-1], setnull=True),
     audience=etl.xstr(r[locs["audience"]-1], setnull=True),
     train_title=etl.xstr(r[locs["train_title"]-1], setnull=True),
     demo_inc=etl.xstr(r[locs["demo_inc"]-1], setnull=True),
@@ -207,14 +207,6 @@ def prep_row(r, locs):
     comp_dt=etl.xstr(r[locs["comp_dt"]-1], setnull=True),
     comments=etl.xstr(r[locs["comments"]-1], setnull=True))
     # pk=gen_pk(r, locs))
-
-
-def gen_pk(r, locs):
-    return etl.xstr(r[locs["imp_agency"] - 1].value) + etl.xstr(r[locs["local_partner"] - 1].value) + etl.xstr(
-        r[locs["district"] - 1].value) + etl.xstr(r[locs["vdc"] - 1].value) + etl.xstr(
-        r[locs["ward"] - 1].value) + etl.xstr(r[locs["act_type"] - 1].value) + etl.xstr(
-        r[locs["act_desc"] - 1].value) + etl.xstr(r[locs["quantity"] - 1].value) + etl.xstr(
-        r[locs["total_hh"] - 1].value)
 
 
 def get_locs(ws):
