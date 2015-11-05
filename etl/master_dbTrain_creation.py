@@ -1,7 +1,5 @@
 """read in master db file and upload it to SQL"""
 # TODO: read in DDL from xls or somethign better
-from django.db.models.expressions import Col
-
 from sqlalchemy import create_engine
 
 import os
