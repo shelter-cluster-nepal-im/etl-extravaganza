@@ -38,7 +38,7 @@ class Trainings(Base):
     Last Update	: as_of
     District HLCIT  Code : dist_code
     VDC / Municipality HLCIT  Code : vdc_code
-    UNOCHA Activity Categories : act_cat
+    UID : uid
 
     Implementing agency	:	imp_agency
     Sourcing Agency	:	source_agency
@@ -84,7 +84,7 @@ class Trainings(Base):
     as_of = Column(String)
     dist_code = Column(String)
     vdc_code = Column(String)
-    act_cat = Column(String)
+    uid = Column(String)
 
     imp_agency = Column(String)
     source_agency = Column(String)
@@ -175,7 +175,7 @@ def prep_row(r, locs):
     as_of=etl.xstr(r[locs["as_of"]-1], setnull=True),
     dist_code=etl.xstr(r[locs["dist_code"]-1], setnull=True),
     vdc_code=etl.xstr(r[locs["vdc_code"]-1], setnull=True),
-    act_cat=etl.xstr(r[locs["act_cat"]-1], setnull=True),
+    uid=etl.xstr(r[locs["uid"]-1], setnull=True),
     imp_agency=etl.xstr(r[locs["imp_agency"]-1], setnull=True),
     source_agency=etl.xstr(r[locs["source_agency"]-1], setnull=True),
     local_partner=etl.xstr(r[locs["local_partner"]-1], setnull=True),
@@ -226,7 +226,7 @@ def get_locs(ws):
     ret["as_of"] = column_index_from_string(etl.find_in_header(ws, "Last Update"))
     ret["dist_code"] = column_index_from_string(etl.find_in_header(ws, "District HLCIT Code"))
     ret["vdc_code"] = column_index_from_string(etl.find_in_header(ws, "VDC / Municipality HLCIT Code"))
-    ret["act_cat"] = column_index_from_string(etl.find_in_header(ws, "UNOCHA Activity Categories"))
+    ret["uid"] = column_index_from_string(etl.find_in_header(ws, "UID"))
 
     ret["imp_agency"] = column_index_from_string(etl.find_in_header(ws, "Implementing agency"))
     ret["source_agency"] = column_index_from_string(etl.find_in_header(ws, "Sourcing Agency"))
