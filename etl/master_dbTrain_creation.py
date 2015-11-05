@@ -231,9 +231,9 @@ def get_locs(ws):
     ret["imp_agency"] = column_index_from_string(etl.find_in_header(ws, "Implementing agency"))
     ret["source_agency"] = column_index_from_string(etl.find_in_header(ws, "Sourcing Agency"))
     ret["local_partner"] = column_index_from_string(etl.find_in_header(ws, "Local partner agency"))
-    ret["contact_name"] = column_index_from_string(etl.find_in_header(ws, "Agency / Local Contact Name"))
-    ret["contact_email"] = column_index_from_string(etl.find_in_header(ws, "Agency / Local Contact Email"))
-    ret["contact_phone"] = column_index_from_string(etl.find_in_header(ws, "Agency / Local Contact Phone #"))
+    ret["contact_name"] = column_index_from_string(etl.find_in_header(ws, "Contact Name"))
+    ret["contact_email"] = column_index_from_string(etl.find_in_header(ws, "Contact Email"))
+    ret["contact_phone"] = column_index_from_string(etl.find_in_header(ws, "Contact Phone Number"))
 
     ret["district"] = column_index_from_string(etl.find_in_header(ws, "District"))
     ret["vdc"] = column_index_from_string(etl.find_in_header(ws, "VDC / Municipalities"))
