@@ -116,55 +116,57 @@ def insert_data(path, location, table_name):
     session.commit()
 
 
-def check_zero_entries(r, locs, meta):
-    """iterate through each value and see if any ints are Nones, set to 0"""
-    for col in meta.columns:
-        if (isinstance(col.type, Integer) or isinstance(col.type, Float)) and col.description != 'pk'\
-            and etl.xstr(r[locs[col.description]-1].value) == 'None':
-            r[locs[col.description]-1].value = '0'
-
-
-def make_null(r, locs, meta):
-    """iterate through each value and see if any values are Nones, set to None (Null in db)"""
-    for col in meta.columns:
-        if etl.xstr(r[locs[col.description]-1].value) == 'None':
-            r[locs[col.description]-1].value = None
-
-
 def prep_row(r, locs):
     #check to see if numeric rows are None - if so, make 0
-    r = check_zero_entries(r, locs, Base.metadata.tables['distributions'])
-    r = make_null(r, locs, Base.metadata.tables['distributions'])
+    r = etl.get_values(r, setnull=True)
+
+    print 'dubz'
+
+    print etl.xstr(r[locs["quantity"]-1])
+    print etl.xstr(r[locs["total_hh"]-1])
+    print etl.xstr(r[locs["avg_hh_cost"]-1])
+    print etl.xstr(r[locs["fem_hh"]-1])
+    print etl.xstr(r[locs["vuln_hh"]-1])
+
+    print type(etl.xstr(r[locs["quantity"]-1]))
+    print type(etl.xstr(r[locs["total_hh"]-1]))
+    print type(etl.xstr(r[locs["avg_hh_cost"]-1]))
+    print type(etl.xstr(r[locs["fem_hh"]-1]))
+    print type(etl.xstr(r[locs["vuln_hh"]-1]))
+
+    print
+    print 
+
 
     return Distributions(
-    priority=etl.xstr(r[locs["priority"]-1].value),
-    access_method=etl.xstr(r[locs["access_method"]-1].value),
-    hub=etl.xstr(r[locs["hub"]-1].value),
-    as_of=etl.xstr(r[locs["as_of"]-1].value),
-    dist_code=etl.xstr(r[locs["dist_code"]-1].value),
-    vdc_code=etl.xstr(r[locs["vdc_code"]-1].value),
-    act_cat=etl.xstr(r[locs["act_cat"]-1].value),
-    imp_agency=etl.xstr(r[locs["imp_agency"]-1].value),
-    source_agency=etl.xstr(r[locs["source_agency"]-1].value),
-    local_partner=etl.xstr(r[locs["local_partner"]-1].value),
-    contact_name=etl.xstr(r[locs["contact_name"]-1].value),
-    contact_email=etl.xstr(r[locs["contact_email"]-1].value),
-    contact_phone=etl.xstr(r[locs["contact_phone"]-1].value),
-    district=etl.xstr(r[locs["district"]-1].value),
-    vdc=etl.xstr(r[locs["vdc"]-1].value),
-    ward=etl.xstr(r[locs["ward"]-1].value),
-    act_type=etl.xstr(r[locs["act_type"]-1].value),
-    act_desc=etl.xstr(r[locs["act_desc"]-1].value),
-    targeting=etl.xstr(r[locs["targeting"]-1].value),
-    quantity=etl.xstr(r[locs["quantity"]-1].value),
-    total_hh=etl.xstr(r[locs["total_hh"]-1].value),
-    avg_hh_cost=etl.xstr(r[locs["avg_hh_cost"]-1].value),
-    fem_hh=etl.xstr(r[locs["fem_hh"]-1].value),
-    vuln_hh=etl.xstr(r[locs["vuln_hh"]-1].value),
-    act_status=etl.xstr(r[locs["act_status"]-1].value),
-    start_dt=etl.xstr(r[locs["start_dt"]-1].value),
-    comp_dt=etl.xstr(r[locs["comp_dt"]-1].value),
-    comments=etl.xstr(r[locs["comments"]-1].value))
+    priority=etl.xstr(r[locs["priority"]-1], setnull=True),
+    access_method=etl.xstr(r[locs["access_method"]-1], setnull=True),
+    hub=etl.xstr(r[locs["hub"]-1], setnull=True),
+    as_of=etl.xstr(r[locs["as_of"]-1], setnull=True),
+    dist_code=etl.xstr(r[locs["dist_code"]-1], setnull=True),
+    vdc_code=etl.xstr(r[locs["vdc_code"]-1], setnull=True),
+    act_cat=etl.xstr(r[locs["act_cat"]-1], setnull=True),
+    imp_agency=etl.xstr(r[locs["imp_agency"]-1], setnull=True),
+    source_agency=etl.xstr(r[locs["source_agency"]-1], setnull=True),
+    local_partner=etl.xstr(r[locs["local_partner"]-1], setnull=True),
+    contact_name=etl.xstr(r[locs["contact_name"]-1], setnull=True),
+    contact_email=etl.xstr(r[locs["contact_email"]-1], setnull=True),
+    contact_phone=etl.xstr(r[locs["contact_phone"]-1], setnull=True),
+    district=etl.xstr(r[locs["district"]-1], setnull=True),
+    vdc=etl.xstr(r[locs["vdc"]-1], setnull=True),
+    ward=etl.xstr(r[locs["ward"]-1], setnull=True),
+    act_type=etl.xstr(r[locs["act_type"]-1], setnull=True),
+    act_desc=etl.xstr(r[locs["act_desc"]-1], setnull=True),
+    targeting=etl.xstr(r[locs["targeting"]-1], setnull=True),
+    quantity=etl.xstr(r[locs["quantity"]-1], setnull=True),
+    total_hh=etl.xstr(r[locs["total_hh"]-1], setnull=True),
+    avg_hh_cost=etl.xstr(r[locs["avg_hh_cost"]-1], setnull=True),
+    fem_hh=etl.xstr(r[locs["fem_hh"]-1], setnull=True),
+    vuln_hh=etl.xstr(r[locs["vuln_hh"]-1], setnull=True),
+    act_status=etl.xstr(r[locs["act_status"]-1], setnull=True),
+    start_dt=etl.xstr(r[locs["start_dt"]-1], setnull=True),
+    comp_dt=etl.xstr(r[locs["comp_dt"]-1], setnull=True),
+    comments=etl.xstr(r[locs["comments"]-1], setnull=True))
    # pk=gen_pk(r, locs))
 
 def gen_pk(r, locs):

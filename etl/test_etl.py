@@ -171,9 +171,15 @@ class TestEtl(unittest.TestCase):
 
     def test_get_values(self):
         db = Workbook().active
-        db.append(('val', 'blank', 'key'))
+        db.append(('val', 'key', 'makeblank'))
         db.append(('val', 'key'))
-        self.assertEqual(etl.get_values(db.rows[1]),['val','key'])
+        self.assertEqual(etl.get_values(db.rows[0]),['val','key', ''])
+
+    def test_get_values_null(self):
+        db = Workbook().active
+        db.append(('val', 'key','blank'))
+        db.append(('val',))
+        self.assertEqual(etl.get_values(db.rows[1], setnull = True),['val', None, None])
 
     def test_keep_dict(self):
         """row is new value, dict is old"""
@@ -287,6 +293,13 @@ class TestEtl(unittest.TestCase):
             print
             print
             print
+
+    def test_xstr_no_null(self):
+        self.assertEqual(etl.xstr('string!'), 'string!')
+
+    def test_xstr_null(self):
+        self.assertEqual(etl.xstr('None', setnull=True), None)
+
 
 if __name__ == '__main__':
     unittest.main()
