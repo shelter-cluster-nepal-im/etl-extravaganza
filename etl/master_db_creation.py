@@ -120,24 +120,6 @@ def prep_row(r, locs):
     #check to see if numeric rows are None - if so, make 0
     r = etl.get_values(r, setnull=True)
 
-    print 'dubz'
-
-    print etl.xstr(r[locs["quantity"]-1])
-    print etl.xstr(r[locs["total_hh"]-1])
-    print etl.xstr(r[locs["avg_hh_cost"]-1])
-    print etl.xstr(r[locs["fem_hh"]-1])
-    print etl.xstr(r[locs["vuln_hh"]-1])
-
-    print type(etl.xstr(r[locs["quantity"]-1]))
-    print type(etl.xstr(r[locs["total_hh"]-1]))
-    print type(etl.xstr(r[locs["avg_hh_cost"]-1]))
-    print type(etl.xstr(r[locs["fem_hh"]-1]))
-    print type(etl.xstr(r[locs["vuln_hh"]-1]))
-
-    print
-    print 
-
-
     return Distributions(
     priority=etl.xstr(r[locs["priority"]-1], setnull=True),
     access_method=etl.xstr(r[locs["access_method"]-1], setnull=True),
