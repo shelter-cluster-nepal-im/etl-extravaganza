@@ -168,8 +168,7 @@ def make_null(r, locs, meta):
 
 def prep_row(r, locs):
     # check to see if numeric rows are None - if so, make 0
-    r = check_zero_entries(r, locs, Base.metadata.tables['trainings'])
-    r = make_null(r, locs, Base.metadata.tables['trainings'])
+    r = etl.get_values(r, setnull=True)
 
     return Trainings(
     priority=etl.xstr(r[locs["priority"]-1], setnull=True),
