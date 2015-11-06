@@ -110,7 +110,7 @@ class Distributions(Base):
     comp_dt = Column(String)
     comp_day = Column(Integer)
     comp_month = Column(Integer)
-    start_year = Column(Integer)
+    comp_year = Column(Integer)
     comments = Column(String)
     pk = Column(Integer, primary_key=True)
 
