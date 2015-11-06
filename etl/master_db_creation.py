@@ -39,15 +39,18 @@ class Distributions(Base):
     District HLCIT  Code : dist_code
     VDC / Municipality HLCIT  Code : vdc_code
     UNOCHA Activity Categories : act_cat
+
     Implementing agency	:	imp_agency
     Sourcing Agency	:	source_agency
     Local partner agency	:	local_partner
     Contact Name	:	contact_name
     Contact Email	:	contact_email
     Contact Phone Number	:	contact_phone
+
     District	:	district
     VDC / Municipalities	:	vdc
     Municipal Ward	:	ward
+
     Action type	:	act_type
     Action description	:	act_desc
     Targeting	:	targeting
@@ -56,9 +59,16 @@ class Distributions(Base):
     Average cost per households (NPR)	:	avg_hh_cost
     Female headed households	:	fem_hh
     Vulnerable Caste / Ethnicity households 	:	vuln_hh
+
     Activity Status	:	act_status
     "Start date (Actual or Planned)"	:	start_dt
+    start_day : start_day
+    start_month : start_month
+    start_year : start_year
     "Completion Date (Actual or Planned)"	:	comp_dt
+    comp_day : start_day
+    comp_month : start_month
+    comp_year : start_year
     Additional Comments	:	comments
     """
 
@@ -71,15 +81,18 @@ class Distributions(Base):
     dist_code = Column(String)
     vdc_code = Column(String)
     act_cat = Column(String)
+
     imp_agency = Column(String)
     source_agency = Column(String)
     local_partner = Column(String)
     contact_name = Column(String)
     contact_email = Column(String)
     contact_phone = Column(String)
+
     district = Column(String)
     vdc = Column(String)
     ward = Column(String)
+
     act_type = Column(String)
     act_desc = Column(String)
     targeting = Column(String)
@@ -88,9 +101,16 @@ class Distributions(Base):
     avg_hh_cost = Column(Float)
     fem_hh = Column(Float)
     vuln_hh = Column(Float)
+
     act_status = Column(String)
     start_dt = Column(String)
+    start_day = Column(Integer)
+    start_month = Column(Integer)
+    start_year = Column(Integer)
     comp_dt = Column(String)
+    comp_day = Column(Integer)
+    comp_month = Column(Integer)
+    start_year = Column(Integer)
     comments = Column(String)
     pk = Column(Integer, primary_key=True)
 
@@ -128,15 +148,18 @@ def prep_row(r, locs):
     dist_code=etl.xstr(r[locs["dist_code"]-1], setnull=True),
     vdc_code=etl.xstr(r[locs["vdc_code"]-1], setnull=True),
     act_cat=etl.xstr(r[locs["act_cat"]-1], setnull=True),
+
     imp_agency=etl.xstr(r[locs["imp_agency"]-1], setnull=True),
     source_agency=etl.xstr(r[locs["source_agency"]-1], setnull=True),
     local_partner=etl.xstr(r[locs["local_partner"]-1], setnull=True),
     contact_name=etl.xstr(r[locs["contact_name"]-1], setnull=True),
     contact_email=etl.xstr(r[locs["contact_email"]-1], setnull=True),
     contact_phone=etl.xstr(r[locs["contact_phone"]-1], setnull=True),
+
     district=etl.xstr(r[locs["district"]-1], setnull=True),
     vdc=etl.xstr(r[locs["vdc"]-1], setnull=True),
     ward=etl.xstr(r[locs["ward"]-1], setnull=True),
+
     act_type=etl.xstr(r[locs["act_type"]-1], setnull=True),
     act_desc=etl.xstr(r[locs["act_desc"]-1], setnull=True),
     targeting=etl.xstr(r[locs["targeting"]-1], setnull=True),
@@ -145,9 +168,16 @@ def prep_row(r, locs):
     avg_hh_cost=etl.xstr(r[locs["avg_hh_cost"]-1], setnull=True),
     fem_hh=etl.xstr(r[locs["fem_hh"]-1], setnull=True),
     vuln_hh=etl.xstr(r[locs["vuln_hh"]-1], setnull=True),
+
     act_status=etl.xstr(r[locs["act_status"]-1], setnull=True),
     start_dt=etl.xstr(r[locs["start_dt"]-1], setnull=True),
+    start_day=etl.xstr(r[locs["start_day"]-1], setnull=True),
+    start_month=etl.xstr(r[locs["start_month"]-1], setnull=True),
+    start_year=etl.xstr(r[locs["start_year"]-1], setnull=True),
     comp_dt=etl.xstr(r[locs["comp_dt"]-1], setnull=True),
+    comp_day=etl.xstr(r[locs["comp_day"]-1], setnull=True),
+    comp_month=etl.xstr(r[locs["comp_month"]-1], setnull=True),
+    comp_year=etl.xstr(r[locs["comp_year"]-1], setnull=True),
     comments=etl.xstr(r[locs["comments"]-1], setnull=True))
    # pk=gen_pk(r, locs))
 
@@ -165,15 +195,18 @@ def get_locs(ws):
     ret["dist_code"]=column_index_from_string(etl.find_in_header(ws,"District HLCIT Code"))
     ret["vdc_code"]=column_index_from_string(etl.find_in_header(ws,"VDC / Municipality HLCIT Code"))
     ret["act_cat"]=column_index_from_string(etl.find_in_header(ws,"UNOCHA Activity Categories"))
+
     ret["imp_agency"]=column_index_from_string(etl.find_in_header(ws,"Implementing agency"))
     ret["source_agency"]=column_index_from_string(etl.find_in_header(ws,"Sourcing Agency"))
     ret["local_partner"]=column_index_from_string(etl.find_in_header(ws,"Local partner agency"))
     ret["contact_name"]=column_index_from_string(etl.find_in_header(ws,"Agency / Local Contact Name"))
     ret["contact_email"]=column_index_from_string(etl.find_in_header(ws,"Agency / Local Contact Email"))
     ret["contact_phone"]=column_index_from_string(etl.find_in_header(ws,"Agency / Local Contact Phone #"))
+
     ret["district"]=column_index_from_string(etl.find_in_header(ws,"District"))
     ret["vdc"]=column_index_from_string(etl.find_in_header(ws,"VDC / Municipalities"))
     ret["ward"]=column_index_from_string(etl.find_in_header(ws,"Municipal Ward"))
+
     ret["act_type"]=column_index_from_string(etl.find_in_header(ws,"Action type"))
     ret["act_desc"]=column_index_from_string(etl.find_in_header(ws,"Action description"))
     ret["targeting"]=column_index_from_string(etl.find_in_header(ws,"Targeting"))
@@ -182,9 +215,16 @@ def get_locs(ws):
     ret["avg_hh_cost"]=column_index_from_string(etl.find_in_header(ws,"Average cost per households (NPR)"))
     ret["fem_hh"]=column_index_from_string(etl.find_in_header(ws,"Female headed households"))
     ret["vuln_hh"]=column_index_from_string(etl.find_in_header(ws,"Vulnerable Caste / Ethnicity households"))
+
     ret["act_status"]=column_index_from_string(etl.find_in_header(ws,"Activity Status"))
     ret["start_dt"]=column_index_from_string(etl.find_in_header(ws,"Start date"))
+    ret["start_day"]=column_index_from_string(etl.find_in_header(ws,"start_day"))
+    ret["start_month"]=column_index_from_string(etl.find_in_header(ws,"start_month"))
+    ret["start_year"]=column_index_from_string(etl.find_in_header(ws,"start_year"))
     ret["comp_dt"]=column_index_from_string(etl.find_in_header(ws,"Completion Date"))
+    ret["comp_day"]=column_index_from_string(etl.find_in_header(ws,"comp_day"))
+    ret["comp_month"]=column_index_from_string(etl.find_in_header(ws,"comp_month"))
+    ret["comp_year"]=column_index_from_string(etl.find_in_header(ws,"comp_year"))
     ret["comments"]=column_index_from_string(etl.find_in_header(ws,"Additional Comments"))
     return ret
 
