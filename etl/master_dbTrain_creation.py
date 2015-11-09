@@ -71,7 +71,13 @@ class Trainings(Base):
 
     Activity Status	:	act_status
     "Start date (Actual or Planned)"	:	start_dt
+    start_day : start_day
+    start_month : start_month
+    start_year : start_year
     "Completion Date (Actual or Planned)"	:	comp_dt
+    comp_day : comp_day
+    comp_month : comp_month
+    comp_year : comp_year
 
     Additional Comments	:	comments
     """
@@ -117,7 +123,13 @@ class Trainings(Base):
 
     act_status = Column(String)
     start_dt = Column(String)
+    start_day = Column(Integer)
+    start_month = Column(Integer)
+    start_year = Column(Integer)
     comp_dt = Column(String)
+    comp_day = Column(Integer)
+    comp_month = Column(Integer)
+    comp_year = Column(Integer)
 
     comments = Column(String)
     pk = Column(Integer, primary_key=True)
@@ -176,15 +188,18 @@ def prep_row(r, locs):
     dist_code=etl.xstr(r[locs["dist_code"]-1], setnull=True),
     vdc_code=etl.xstr(r[locs["vdc_code"]-1], setnull=True),
     uid=etl.xstr(r[locs["uid"]-1], setnull=True),
+
     imp_agency=etl.xstr(r[locs["imp_agency"]-1], setnull=True),
     source_agency=etl.xstr(r[locs["source_agency"]-1], setnull=True),
     local_partner=etl.xstr(r[locs["local_partner"]-1], setnull=True),
     contact_name=etl.xstr(r[locs["contact_name"]-1], setnull=True),
     contact_email=etl.xstr(r[locs["contact_email"]-1], setnull=True),
     contact_phone=etl.xstr(r[locs["contact_phone"]-1], setnull=True),
+
     district=etl.xstr(r[locs["district"]-1], setnull=True),
     vdc=etl.xstr(r[locs["vdc"]-1], setnull=True),
     ward=etl.xstr(r[locs["ward"]-1], setnull=True),
+
     train_sub=etl.xstr(r[locs["train_sub"]-1], setnull=True),
     audience=etl.xstr(r[locs["audience"]-1], setnull=True),
     train_title=etl.xstr(r[locs["train_title"]-1], setnull=True),
@@ -202,9 +217,17 @@ def prep_row(r, locs):
     person_dis=etl.xstr(r[locs["person_dis"]-1], setnull=True),
     fem_hh=etl.xstr(r[locs["fem_hh"]-1], setnull=True),
     vuln_hh=etl.xstr(r[locs["vuln_hh"]-1], setnull=True),
+
     act_status=etl.xstr(r[locs["act_status"]-1], setnull=True),
     start_dt=etl.xstr(r[locs["start_dt"]-1], setnull=True),
+    start_day=etl.xstr(r[locs["start_day"]-1], setnull=True),
+    start_month=etl.xstr(r[locs["start_month"]-1], setnull=True),
+    start_year=etl.xstr(r[locs["start_year"]-1], setnull=True),
     comp_dt=etl.xstr(r[locs["comp_dt"]-1], setnull=True),
+    comp_day=etl.xstr(r[locs["comp_day"]-1], setnull=True),
+    comp_month=etl.xstr(r[locs["comp_month"]-1], setnull=True),
+    comp_year=etl.xstr(r[locs["comp_year"]-1], setnull=True),
+
     comments=etl.xstr(r[locs["comments"]-1], setnull=True))
     # pk=gen_pk(r, locs))
 
@@ -250,8 +273,14 @@ def get_locs(ws):
     ret["fem_hh"] = column_index_from_string(etl.find_in_header(ws, "Female Headed Households (if applicable)"))
 
     ret["act_status"] = column_index_from_string(etl.find_in_header(ws, "Activity Status"))
-    ret["start_dt"] = column_index_from_string(etl.find_in_header(ws, "Start date"))
-    ret["comp_dt"] = column_index_from_string(etl.find_in_header(ws, "Completion Date"))
+    ret["start_dt"]=column_index_from_string(etl.find_in_header(ws,"Start date"))
+    ret["start_day"]=column_index_from_string(etl.find_in_header(ws,"start_day"))
+    ret["start_month"]=column_index_from_string(etl.find_in_header(ws,"start_month"))
+    ret["start_year"]=column_index_from_string(etl.find_in_header(ws,"start_year"))
+    ret["comp_dt"]=column_index_from_string(etl.find_in_header(ws,"Completion Date"))
+    ret["comp_day"]=column_index_from_string(etl.find_in_header(ws,"comp_day"))
+    ret["comp_month"]=column_index_from_string(etl.find_in_header(ws,"comp_month"))
+    ret["comp_year"]=column_index_from_string(etl.find_in_header(ws,"comp_year"))
 
     ret["comments"] = column_index_from_string(etl.find_in_header(ws, "Additional Comments"))
     return ret
