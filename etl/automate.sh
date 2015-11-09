@@ -19,6 +19,3 @@ sudo python make_districts.py;
 echo \"consider them made\";" >> /tmp/out.txt 2>&1
 
 cat /tmp/out.txt
-
-ssh -i ~/.ssh/shelter-cluster.pem ec2-user@ec2-52-3-170-125.compute-1.amazonaws.com
-python /home/ec2-user/etl-extravaganza/etl/master_db_creation.py --path \"2015 Nepal EQ/04 IM/Reporting/Reporting/Database_&_Template/DatabaseV5.0_30_10_2015.xlsx\" --location db --table_name distributions;"
