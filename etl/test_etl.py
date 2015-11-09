@@ -298,7 +298,7 @@ class TestEtl(unittest.TestCase):
         self.assertEqual(etl.xstr('string!'), 'string!')
 
     def test_xstr_null(self):
-        self.assertEqual(etl.xstr('None', setnull=True), None)
+            self.assertEqual(etl.xstr('None', setnull=True), None)
 
 
 if __name__ == '__main__':
