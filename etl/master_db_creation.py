@@ -66,9 +66,9 @@ class Distributions(Base):
     start_month : start_month
     start_year : start_year
     "Completion Date (Actual or Planned)"	:	comp_dt
-    comp_day : start_day
-    comp_month : start_month
-    comp_year : start_year
+    comp_day : comp_day
+    comp_month : comp_month
+    comp_year : comp_year
     Additional Comments	:	comments
     """
 
