@@ -1,3 +1,8 @@
 *.pyc
 tmp*
 *.txt
+*/logs/*
+*.csv
+*.xls*
+*.DS_Store
+*/build/*
