@@ -321,6 +321,8 @@ def algo18(db,ref):
         except:
             bad_date.append(cur + ' @ cell ' + row[0].coordinate)
 
+    print bad_date
+
     return db, ref, return_message('Malformatted date' ,bad_date)
 
 

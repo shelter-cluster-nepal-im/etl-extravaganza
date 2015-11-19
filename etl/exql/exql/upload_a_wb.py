@@ -91,12 +91,12 @@ def create_with_sheet(sht, tbl_nm):
 
 @click.command()
 @click.option('--src', help='local files or on dropbox?', type = click.Choice(['db','local']))
-@click.option('--sheet_name', help='which sheet should we pull?')
+@click.option('--sheet_name', help='which sheet should we pull? Defaults to first if blank')
 @click.option('--path', help='file path to xlsx or directory')
 @click.option('--test', help='are we testing?', is_flag = True)
-@click.option('--append', help='we are appending?', is_flag = True)
+@click.option('--append', help='we are appending to SQL table or insterting?', is_flag = True)
 @click.option('--table_name', help='name of table appending or creating to')
-@click.option('--col_names', help='optional, list of column names. defaults to header', required=False)
+@click.option('--col_names', help='optional, list of column names in SQL table. defaults to header', required=False)
 def ingest(src, path, test, sht_nm, append, tbl_nm, col_nms, sheet_name):
     """iterate through wbs and send to sql"""
 
