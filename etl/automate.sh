@@ -6,7 +6,7 @@ cd /home/ec2-user/etl-extravaganza/;
 sudo git pull;
 python setup.py install;
 echo \"pulled\";
-cd etl;
+cd etl/sql/;
 python master_db_creation.py --path '$2' --location db --table_name distributions;
 echo \"distributions completed\";
 python master_dbTrain_creation.py --path '$2' --location db --table_name training;
