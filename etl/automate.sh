@@ -3,8 +3,8 @@
 ssh -tt -i ~/.ssh/shelter-cluster.pem $1 \
 "source ~/.bash_profile;
 cd /home/ec2-user/etl-extravaganza/;
-sudo git pull;
-python setup.py install;
+sudo git stash; git pull;
+sudo python setup.py install;
 echo \"pulled\";
 cd etl/sql/;
 python master_db_creation.py --path '$2' --location db --table_name distributions;
