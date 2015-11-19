@@ -2,7 +2,6 @@
 from openpyxl import Workbook
 
 import etl
-import master_db_creation
 from sqlalchemy import Column, Integer, String, Float, MetaData
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
@@ -15,15 +14,16 @@ from openpyxl.cell import column_index_from_string
 import click
 import os
 import re
-import sh_obj
-import psycopg2
+import Sheet
 
-engine = create_engine(os.environ['dbk'])
-m = MetaData()
-m.reflect(engine)
+conn = None
+engine = None
 
-conn = psycopg2.connect(os.environ['dbk'])
-cur = conn.cursor()
+
+def get_conn():
+    return create_engine(os.environ['dbk'])
+    #m = MetaData()
+    #m.reflect(engine)
 
 
 def append_sht(sht, tbl_nm, col_nms):
@@ -39,15 +39,6 @@ def create_with_sheet(sht, tbl_nm):
     """insert ws into a new table"""
     cur = conn.cursor()
 
-@click.command()
-@click.option('--src', help='local files or on dropbox?', type = click.Choice(['db','local']))
-@click.option('--sheet_name', help='which sheet should we pull? Defaults to first')
-@click.option('--path', help='file path to xlsx or directory')
-@click.option('--test', help='are we testing?', is_flag = True)
-@click.option('--append', help='we are appending?', is_flag = True)
-@click.option('--table_name', help='name of table appending or creating to')
-@click.option('--col_names', help='optional, list of column names. defaults to header', required=False)
-
 
 def get_sht_nm(wb, sht_nm):
     """decide which sheet to pull from wb (default to first if None)"""
@@ -55,22 +46,6 @@ def get_sht_nm(wb, sht_nm):
         return wb.sheetnames[0]
     else:
         return sht_nm
-
-def ingest(src, path, test, sht_nm, append, tbl_nm, col_nms):
-    """iterate through wbs and send to sql"""
-
-    wb = etl.pull_wb(src, path, True)
-    sht_raw = wb.get_sheet_by_name(get_sht_nm(wb, sht_nm))
-    sht = sh_obj(sht_raw, path)
-
-    if tbl_nm not in [t for t in m.tables.values()] & append:
-        raise Exception('Table does not exist to append to')
-
-    elif append:
-        append_sht(sht, tbl_nm)
-
-    elif not append:
-        create_with_sheet(sht, tbl_nm)
 
 
 #Do we want to have option for multiple wbs? how to handle that logic? this would be
@@ -112,5 +87,37 @@ def get_sheets(wbs, sheet_name):
 
     return ws
 
+def create_with_sheet(sht, tbl_nm):
+    """create a SQL table and populate with data"""
+    print sht.col_nms
+
+
+@click.command()
+@click.option('--src', help='local files or on dropbox?', type = click.Choice(['db','local']))
+@click.option('--sheet_name', help='which sheet should we pull? Defaults to first if blank')
+@click.option('--path', help='file path to xlsx or directory')
+@click.option('--test', help='are we testing?', is_flag = True)
+@click.option('--append', help='we are appending to SQL table or insterting?', is_flag = True)
+@click.option('--table_name', help='name of table appending or creating to')
+@click.option('--col_names', help='optional, list of column names in SQL table. defaults to header', required=False)
+def ingest(src, path, test, sht_nm, append, tbl_nm, col_nms, sheet_name):
+    """iterate through wbs and send to sql"""
+
+    wb = etl.pull_wb(src, path, True)
+    sht_raw = wb.get_sheet_by_name(get_sht_nm(wb, sht_nm))
+    sht = Sheet(sht_raw, sheet_name)
+
+    if not engine.has_key(tbl_nm) & append:
+        raise Exception('Table does not exist to append to')
+
+    elif append:
+        append_sht(sht, tbl_nm)
+
+    elif not append:
+        create_with_sheet(sht, tbl_nm)
+
 if __name__ == '__main__':
-    wb = ingest()
+    global engine
+    engine = get_conn()
+    ingest()
+
