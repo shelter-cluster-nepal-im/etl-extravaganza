@@ -13,7 +13,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 import click
 import dropbox
-import etl
+from etl import etl
 from openpyxl.cell import column_index_from_string
 
 
