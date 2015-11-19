@@ -103,11 +103,11 @@ class Distributions(Base):
     vuln_hh = Column(Float)
 
     act_status = Column(String)
-    start_dt = Column(String)
+    #start_dt = Column(String)
     start_day = Column(Integer)
     start_month = Column(Integer)
     start_year = Column(Integer)
-    comp_dt = Column(String)
+    #comp_dt = Column(String)
     comp_day = Column(Integer)
     comp_month = Column(Integer)
     comp_year = Column(Integer)
@@ -170,11 +170,11 @@ def prep_row(r, locs):
     vuln_hh=etl.xstr(r[locs["vuln_hh"]-1], setnull=True),
 
     act_status=etl.xstr(r[locs["act_status"]-1], setnull=True),
-    start_dt=etl.xstr(r[locs["start_dt"]-1], setnull=True),
+    #start_dt=etl.xstr(r[locs["start_dt"]-1], setnull=True),
     start_day=etl.xstr(r[locs["start_day"]-1], setnull=True),
     start_month=etl.xstr(r[locs["start_month"]-1], setnull=True),
     start_year=etl.xstr(r[locs["start_year"]-1], setnull=True),
-    comp_dt=etl.xstr(r[locs["comp_dt"]-1], setnull=True),
+    #comp_dt=etl.xstr(r[locs["comp_dt"]-1], setnull=True),
     comp_day=etl.xstr(r[locs["comp_day"]-1], setnull=True),
     comp_month=etl.xstr(r[locs["comp_month"]-1], setnull=True),
     comp_year=etl.xstr(r[locs["comp_year"]-1], setnull=True),
@@ -217,14 +217,14 @@ def get_locs(ws):
     ret["vuln_hh"]=column_index_from_string(etl.find_in_header(ws,"Vulnerable Caste / Ethnicity households"))
 
     ret["act_status"]=column_index_from_string(etl.find_in_header(ws,"Activity Status"))
-    ret["start_dt"]=column_index_from_string(etl.find_in_header(ws,"Start date"))
-    ret["start_day"]=column_index_from_string(etl.find_in_header(ws,"start_day"))
-    ret["start_month"]=column_index_from_string(etl.find_in_header(ws,"start_month"))
-    ret["start_year"]=column_index_from_string(etl.find_in_header(ws,"start_year"))
-    ret["comp_dt"]=column_index_from_string(etl.find_in_header(ws,"Completion Date"))
-    ret["comp_day"]=column_index_from_string(etl.find_in_header(ws,"comp_day"))
-    ret["comp_month"]=column_index_from_string(etl.find_in_header(ws,"comp_month"))
-    ret["comp_year"]=column_index_from_string(etl.find_in_header(ws,"comp_year"))
+    #ret["start_dt"]=column_index_from_string(etl.find_in_header(ws,"Start date"))
+    ret["start_day"]=column_index_from_string(etl.find_in_header(ws,"DD - Start"))
+    ret["start_month"]=column_index_from_string(etl.find_in_header(ws,"MM - Start"))
+    ret["start_year"]=column_index_from_string(etl.find_in_header(ws,"YYYY - Start"))
+    #ret["comp_dt"]=column_index_from_string(etl.find_in_header(ws,"Completion Date"))
+    ret["comp_day"]=column_index_from_string(etl.find_in_header(ws,"DD - End"))
+    ret["comp_month"]=column_index_from_string(etl.find_in_header(ws,"MM - End"))
+    ret["comp_year"]=column_index_from_string(etl.find_in_header(ws,"YYYY - End"))
     ret["comments"]=column_index_from_string(etl.find_in_header(ws,"Additional Comments"))
     return ret
 
