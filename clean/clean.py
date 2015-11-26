@@ -322,7 +322,7 @@ def algo18(db,ref):
                 bad_date.append(str(cur) + ' @ row ' + str(row[0].row))
 
         except :
-            bad_date.append(str(cur) + ' @ row ' + str( quit()[0].row))
+            bad_date.append(str(cur) + ' @ row ' + str(row[0].row))
 
     return db, ref, return_message('Malformatted date before EQ date', bad_date)
 
