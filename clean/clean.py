@@ -5,7 +5,7 @@
 #Nones?
 #return col and cols methods
 
-from etl import etl
+import etl
 import string
 from datetime import datetime
 from dateutil.parser import *
