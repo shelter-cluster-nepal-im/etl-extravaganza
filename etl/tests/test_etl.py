@@ -294,6 +294,10 @@ class TestEtl(unittest.TestCase):
     def test_xstr_no_null(self):
         self.assertEqual(etl.xstr('string!'), 'string!')
 
+    def test_clean_exclude(self):
+        new_list = ['C -','C-','C','dsfC-']
+        self.assertEqual(etl.clean_exclude(new_list), ['C -', 'C-'])
+
     def test_xstr_null(self):
             self.assertEqual(etl.xstr('None', setnull=True), None)
 

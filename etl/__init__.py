@@ -1,2 +1,2 @@
 import etl
-from clean import clean
+import clean
