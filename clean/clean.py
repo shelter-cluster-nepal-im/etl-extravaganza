@@ -320,7 +320,6 @@ def algo18(db,ref):
 
             if cur < parse('4-25-2015'):
                 bad_date.append(str(cur) + ' @ row ' + str(row[0].row))
-
         except :
             bad_date.append(str(cur) + ' @ row ' + str(row[0].row))
 

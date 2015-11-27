@@ -631,7 +631,19 @@ def emit_log(path, src):
     for log in current_log:
         #if we have contents to log
         if len(log[1][1]) > 0:
-            csv_out.writerow([log[0]] + [log[1][0]] + [", ".join(xstr(x) for x in log[1][1])])
+	    #must check to see if char length exceeds excel max cell contents
+	    if sum([len(x) for x in log[1][1]]) > 32700:
+		log[1][0] += ' Warning: Too many errors. Please fix the ones shown and re-run!'	        
+		
+		c = 0
+		for i,v in enumerate(log[1][1]):
+		    if c + len(v) > 32700:
+			break
+		    else:
+			c += len(v) + 3
+		log[1][1] = log[1][1][0:i]
+	   
+	    csv_out.writerow([log[0]] + [log[1][0]] + [" | ".join(xstr(x) for x in log[1][1])])
 
     save_file(t, path, src)
     t.close()
